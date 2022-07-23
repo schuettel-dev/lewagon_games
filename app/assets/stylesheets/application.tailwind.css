@@ -6,8 +6,12 @@
   @apply text-5xl font-bold inline-block;
 }
 
-.cool-gradient {
+.cool-text-gradient {
   @apply bg-gradient-to-r from-fuchsia-800 to-purple-800 bg-clip-text text-transparent;
+}
+
+.cool-bg-gradient {
+  @apply bg-gradient-to-br from-fuchsia-600 to-purple-600;
 }
 
 .input {
@@ -19,5 +23,9 @@
 }
 
 .main-navigation a {
-  @apply text-2xl text-white opacity-70 hover:opacity-100 transition;
+  @apply flex items-center gap-x-2 text-2xl text-white opacity-70 hover:opacity-100 transition;
+}
+
+.main-navigation a svg {
+  @apply h-8 w-8;
 }

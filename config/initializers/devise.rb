@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '273836ad039736a4e559a40b49a8f0098f1571c76c319b35bbd144264c4d6a3031ec643dc3280cbf275150a24f792a56276b7ac1249563669a987ae1cf312de9'
+  # config.secret_key = '...'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -36,7 +36,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'ddea2b10f2614528b3cb9f8f412f7ff966b4140ba45dbb4ba3ccffb7af7f778f4f5cffa4d19ee0ea07a235d96e29233ab5b2c741396c09e962151b8bdb015c13'
+  # config.pepper = '...'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -273,9 +273,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   config.omniauth(
     :github,
-    ENV["LEWAGON_GAMES_GITHUB_APP_ID"],
-    ENV["LEWAGON_GAMES_GITHUB_APP_SECRET"],
-    scope: 'user'
+    ENV.fetch("LEWAGON_GAMES_GITHUB_APP_ID", nil),
+    ENV.fetch("LEWAGON_GAMES_GITHUB_APP_SECRET", nil),
+    scope: "user"
   )
 
   # ==> Warden configuration

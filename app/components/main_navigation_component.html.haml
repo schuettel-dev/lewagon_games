@@ -1,0 +1,20 @@
+.w-full.flex.justify-between.items-center
+  %nav.main-navigation.flex.items-center.space-x-8
+    = link_to root_path do
+      = heroicon :play
+      Dashboard
+
+    = link_to admin_batches_path do
+      = heroicon :hashtag
+      Batches
+
+    = link_to admin_users_path do
+      = heroicon :"user-group"
+      Users
+
+  .flex.items-center.space-x-4
+    = image_tag current_user.image_url, class: "rounded-full h-8 w-8 ring-2 ring-white opacity-90", title: current_user.nickname
+
+    = button_to destroy_user_session_path, class: "flex text-fuchsia-300 text-xs flex flex-col items-center opacity-30 hover:opacity-100 transition", title: "Sign out", method: :delete, "data-turbo": false do
+      .h-8.w-8
+        = heroicon :logout

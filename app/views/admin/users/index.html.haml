@@ -1,0 +1,7 @@
+.flex-col.space-y-8
+  = render PageHeadingComponent.new("Users", "user-group")
+  %div
+    %ul
+      - @users.each do |user|
+        %li
+          = user.nickname

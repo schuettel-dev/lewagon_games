@@ -5,23 +5,29 @@ ruby "3.1.0"
 
 gem "bootsnap", require: false
 gem "devise"
+gem "haml-rails"
 gem "importmap-rails"
 gem "jbuilder"
-gem "pg", "~> 1.1"
-gem "puma", "~> 5.0"
+gem "omniauth-github", github: "omniauth/omniauth-github", branch: "master"
+gem "omniauth-rails_csrf_protection"
+gem "pg"
+gem "puma"
+gem "pundit"
 gem "rails"
-gem "redis", "~> 4.0"
+gem "redis"
 gem "sprockets-rails"
 gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "turbo-rails"
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "view_component"
-gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
-gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "rubocop", require: false
+  gem "rubocop-minitest", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rake", require: false
 end
 
 group :development do

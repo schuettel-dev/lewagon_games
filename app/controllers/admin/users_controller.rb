@@ -7,6 +7,5 @@ class Admin::UsersController < ApplicationController
     @form = Users::NewForm.new(User.new, params)
   end
 
-  def create
-  end
+  def create; end
 end
