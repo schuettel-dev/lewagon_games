@@ -1,2 +1,11 @@
-%div
-  = render PageHeadingComponent.new("Batches", :hashtag)
+= render PageComponent.new do |c|
+  - c.heading("Batches", :hashtag)
+
+  - c.actions do
+    = link_to new_admin_batch_path, class: "py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-xl flex items-center gap-x-1 hover:bg-green-500 transition" do
+      .h-6.w-6
+        = heroicon :"plus-sm"
+      New batch
+
+  - c.body do
+    HERE COMES THE BODY

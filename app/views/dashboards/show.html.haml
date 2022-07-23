@@ -1,2 +1,5 @@
-%div
-  = render PageHeadingComponent.new("Dashboard", :play)
+= render PageComponent.new do |c|
+  - c.heading("Dashboard", :play)
+
+  - c.body do
+    HERE COMES THE BODY
