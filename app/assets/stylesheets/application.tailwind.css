@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.h1 {
+  @apply text-5xl font-bold inline-block;
+}
+
+.cool-gradient {
+  @apply bg-gradient-to-r from-fuchsia-800 to-purple-800 bg-clip-text text-transparent;
+}
+
+.input {
+  @apply border-2 border-gray-500 p-3 bg-gray-200;
+}
+
+.submit {
+  @apply border-2 border-fuchsia-500 p-3 bg-fuchsia-300 cursor-pointer hover:bg-fuchsia-400 transition;
+}
+
+.main-navigation a {
+  @apply text-2xl text-white opacity-70 hover:opacity-100 transition;
+}
