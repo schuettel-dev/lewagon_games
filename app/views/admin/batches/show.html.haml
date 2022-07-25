@@ -1,0 +1,4 @@
+= render PageComponent.new do |c|
+  - c.heading(@batch.decorate.display_name_for_heading, :hashtag)
+  - c.actions do
+    = link_to "Back", admin_batches_path, class: "shy-link"

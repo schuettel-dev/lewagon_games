@@ -2,10 +2,23 @@
   - c.heading("Batches", :hashtag)
 
   - c.actions do
-    = link_to new_admin_batch_path, class: "py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-xl flex items-center gap-x-1 hover:bg-green-500 transition" do
+    = link_to new_admin_batch_path, class: "green-button" do
       .h-6.w-6
         = heroicon :"plus-sm"
       New batch
 
   - c.body do
-    HERE COMES THE BODY
+    .w-full.my-8
+      = render TableComponent.new do |table|
+        - table.header do |header|
+          - header.column { "Name" }
+          - header.column { "Location" }
+          - header.column
+
+        - table.body do |body|
+          - @batches.each do |batch|
+            - body.row do |row|
+              - row.column { batch.name }
+              - row.column { batch.location }
+              - row.column(class: "text-right") do
+                = link_to "Show", admin_batch_path(batch), class: "link"

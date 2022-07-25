@@ -6,6 +6,14 @@
   @apply text-5xl font-bold inline-block;
 }
 
+.link {
+  @apply text-fuchsia-500 opacity-50 hover:opacity-100 transition;
+}
+
+.shy-link {
+  @apply opacity-40 hover:opacity-80 transition;
+}
+
 .cool-text-gradient {
   @apply bg-gradient-to-r from-fuchsia-800 to-purple-800 bg-clip-text text-transparent;
 }
@@ -14,8 +22,12 @@
   @apply bg-gradient-to-br from-fuchsia-600 to-purple-600;
 }
 
+.label {
+  @apply block text-gray-500 text-lg;
+}
+
 .input {
-  @apply border-2 border-gray-500 p-3 bg-gray-200;
+  @apply w-full rounded-lg border border-gray-300 p-4 text-xl;
 }
 
 .submit {
@@ -28,4 +40,8 @@
 
 .main-navigation a svg {
   @apply h-8 w-8;
+}
+
+.green-button {
+  @apply py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-lg flex items-center gap-x-1 hover:bg-green-500 transition;
 }
