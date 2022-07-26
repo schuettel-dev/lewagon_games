@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_22_172400) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "batch_memberships", force: :cascade do |t|
+    t.bigint "batch_id", null: false
+    t.bigint "user_id", null: false
+    t.string "role", default: "student", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id", "user_id"], name: "index_batch_memberships_on_batch_id_and_user_id", unique: true
+    t.index ["batch_id"], name: "index_batch_memberships_on_batch_id"
+    t.index ["user_id"], name: "index_batch_memberships_on_user_id"
+  end
 
   create_table "batches", force: :cascade do |t|
     t.string "name", null: false

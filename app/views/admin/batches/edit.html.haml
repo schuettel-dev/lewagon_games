@@ -1,0 +1,5 @@
+= render PageComponent.new do |c|
+  - c.heading("Edit batch", :hashtag)
+
+  - c.body do
+    = render Batches::FormComponent.new(form: @form)

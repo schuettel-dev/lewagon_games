@@ -1,4 +1,29 @@
 = render PageComponent.new do |c|
   - c.heading(@batch.decorate.display_name_for_heading, :hashtag)
   - c.actions do
-    = link_to "Back", admin_batches_path, class: "shy-link"
+    = link_to edit_admin_batch_path(@batch), class: "gray-button" do
+      .h-6.w-6
+        = heroicon :pencil
+      Edit
+
+  - c.body do
+    .w-full.grid.grid-cols-3.border.rounded-lg.p-8.bg-white
+      .flex
+        %dl.flex.flex-col.gap-y-1
+          %dt.text-lg.font-bold Owner
+          %dt.text-2xl.flex.space-x-2.items-center.gap-x-2
+            .h-8.w-8
+              = render Users::AvatarComponent.new(@batch.owner)
+            = @batch.owner.decorate.display_name_with_nickname
+
+      .flex
+        %dl.flex.flex-col.gap-y-1
+          %dt.text-lg.font-bold Location
+          %dt.text-2xl.flex.space-x-2.items-center.gap-x-2
+            = @batch.location
+
+      .flex
+        %dl.flex.flex-col.gap-y-1
+          %dt.text-lg.font-bold Members
+          %dt.text-2xl.flex.space-x-2.items-center.gap-x-2
+            = @batch.members.count
