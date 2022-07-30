@@ -27,10 +27,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name", null: false
+    t.string "url_identifier", null: false
     t.string "location", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_batches_on_name", unique: true
+    t.index ["url_identifier"], name: "index_batches_on_url_identifier", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
     t.string "nickname", null: false
     t.string "name"
     t.string "image_url", null: false
+    t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true

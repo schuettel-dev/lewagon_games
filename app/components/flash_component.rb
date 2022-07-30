@@ -1,5 +1,7 @@
 class FlashComponent < ViewComponent::Base
+  include Devise::Controllers::Helpers
+
   def render?
-    flash.any?
+    signed_in? && flash.any?
   end
 end

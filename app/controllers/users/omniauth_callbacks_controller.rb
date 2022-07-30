@@ -9,11 +9,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     # Removing :extra as it can overflow some session stores
     session["devise.github_data"] = request.env["omniauth.auth"].except(:extra)
-    redirect_to new_user_registration_url
-  end
-
-  def failure
-    redirect_to root_path
+    flash[:notice] = "Could not sign in"
+    redirect_to new_user_session_path
   end
 
   private

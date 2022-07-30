@@ -2,21 +2,4 @@
   - c.heading("New batch", :hashtag)
 
   - c.body do
-    .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
-      = form_with(model: @form) do |f|
-        .flex.flex-col.space-y-8
-          .flex.flex-col
-            = f.label :name, class: "label"
-            = f.text_field :name, class: "input"
-            = render Forms::ErrorMessagesComponent.new(form: @form, field: :name)
-
-          .flex.flex-col
-            = f.label :location, class: "label"
-            = f.text_field :location, class: "input"
-            = render Forms::ErrorMessagesComponent.new(form: @form, field: :location)
-
-          .flex.items-center.space-x-8
-            = f.button type: :submit, class: "green-button" do
-              = heroicon :"plus-sm"
-              Add batch
-            = link_to "Cancel", admin_batches_path, class: "shy-link"
+    = render "form", form: @form

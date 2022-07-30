@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
   prepend_before_action :redirect_to_dashboard_if_signed_in
   skip_before_action :authenticate_user!
 
-  def new; end
+  def new
+    flash[:notice] = "Could not sign in"
+  end
 
   private
 

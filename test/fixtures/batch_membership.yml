@@ -1,0 +1,14 @@
+eighty_one_owner:
+  batch: eighty_one
+  user: lxxxvi
+  role: "owner"
+
+eighty_two_owner:
+  batch: eighty_two
+  user: lxxxvi
+  role: "owner"
+
+eighty_three_owner:
+  batch: eighty_three
+  user: lxxxvi
+  role: "owner"

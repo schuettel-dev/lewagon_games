@@ -2,4 +2,4 @@
   - c.heading("Edit batch", :hashtag)
 
   - c.body do
-    = render Batches::FormComponent.new(form: @form)
+    = render "form", form: @form

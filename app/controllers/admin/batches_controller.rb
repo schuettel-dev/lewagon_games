@@ -5,9 +5,7 @@ class Admin::BatchesController < ApplicationController
     @batches = Batch.names_alphabetically
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @form = Batches::Form.new(Batch.new)
@@ -30,6 +28,6 @@ class Admin::BatchesController < ApplicationController
   private
 
   def set_batch
-    @batch = Batch.find(params[:id])
+    @batch = Batch.find_by!(url_identifier: params[:id])
   end
 end

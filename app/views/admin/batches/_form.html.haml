@@ -13,6 +13,8 @@
 
       .flex.items-center.space-x-8
         = f.button type: :submit, class: "green-button" do
-          = heroicon :"plus-sm"
-          = submit_button_text
-        = link_to "Cancel", admin_batches_path, class: "shy-link"
+          .h-4.w-4
+            = heroicon form.submit_icon
+          = form.submit_text
+
+        = link_to "Cancel", form.cancel_path, class: "shy-link"

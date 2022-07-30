@@ -1,6 +1,17 @@
 class Batches::Form < ApplicationForm
   attr_reader :current_user
 
+  SUBMIT = {
+    edit: {
+      icon: "pencil",
+      text: "Edit batch"
+    },
+    new: {
+      icon: "plus-sm",
+      text: "Add batch"
+    }
+  }.freeze
+
   def initialize(object, params = {}, current_user = nil)
     @current_user = current_user
     super(object, params)
@@ -19,5 +30,9 @@ class Batches::Form < ApplicationForm
 
   def batch_params
     params.require(:admin_batch).permit(:name, :location)
+  end
+
+  def cancel_path
+    [:admin, object]
   end
 end
