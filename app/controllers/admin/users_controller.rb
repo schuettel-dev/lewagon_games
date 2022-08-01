@@ -3,9 +3,21 @@ class Admin::UsersController < ApplicationController
     @users = User.nicknames_alphabetically
   end
 
-  def new
-    @form = Users::NewForm.new(User.new, params)
+  def show
+    @user = User.find(params[:id])
   end
 
-  def create; end
+  def new
+    @form = Admin::AddGithubUserForm.new(User.new, params)
+  end
+
+  def create
+    @form = Admin::AddGithubUserForm.new(User.new, params)
+
+    if @form.save
+      redirect_to [:admin, @form.object]
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 end

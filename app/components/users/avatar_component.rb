@@ -1,7 +1,6 @@
 class Users::AvatarComponent < ViewComponent::Base
-  def initialize(user, size: 4)
+  def initialize(user)
     @user = user
-    @size = size
   end
 
   def call

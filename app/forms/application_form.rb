@@ -3,7 +3,7 @@ class ApplicationForm
 
   attr_reader :object, :params
 
-  delegate :id, :persisted?, :new_record?, :user, to: :object
+  delegate :id, :persisted?, :new_record?, :to_param, :user, to: :object
 
   SUBMIT_DEFAULTS = {
     edit: {

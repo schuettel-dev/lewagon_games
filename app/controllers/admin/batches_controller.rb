@@ -25,6 +25,16 @@ class Admin::BatchesController < ApplicationController
     @form = Batches::Form.new(@batch)
   end
 
+  def update
+    @form = Batches::Form.new(@batch, params)
+
+    if @form.save
+      redirect_to [:admin, @form.object]
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_batch
