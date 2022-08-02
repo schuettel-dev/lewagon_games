@@ -1,3 +1,5 @@
 class DashboardsController < ApplicationController
-  def show; end
+  def show
+    @count = session[:count].to_i
+  end
 end

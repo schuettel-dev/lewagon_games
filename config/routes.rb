@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: [:show]
   namespace :admin do
-    resources :batches
+    resources :batches, only: [:index, :show, :new, :create, :update, :edit] do
+      resources :members, only: [:new, :create, :destroy], module: :batches
+    end
     resources :users
   end
   root to: "dashboards#show"

@@ -21,6 +21,7 @@ gem "tailwindcss-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "view_component"
+gem "stimulus_reflex"
 
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -31,6 +32,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "faker"
   gem "web-console"
 end
 
