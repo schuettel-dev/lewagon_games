@@ -9,7 +9,6 @@
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
-    = action_cable_meta_tag
   %body.min-h-screen.bg-gray-100.flex.flex-col
     = render HeaderComponent.new
     = render MainComponent.new do |c|

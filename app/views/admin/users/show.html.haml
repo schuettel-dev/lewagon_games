@@ -7,6 +7,4 @@
         %dl.flex.flex-col.gap-y-1
           %dt.text-lg.font-bold Nickname
           %dt.text-2xl.flex.space-x-2.items-center.gap-x-2
-            .h-8.w-8
-              = render Users::AvatarComponent.new(@user)
-            = @user.decorate.display_name_with_nickname
+            = render Users::NameWithAvatarComponent.new(user: @user)

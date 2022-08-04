@@ -13,9 +13,7 @@
           %dl.flex.flex-col.gap-y-1
             %dt.text-lg.font-bold Owner
             %dt.text-2xl.flex.space-x-2.items-center.gap-x-2
-              .h-8.w-8
-                = render Users::AvatarComponent.new(@batch.owner)
-              = @batch.owner.decorate.display_name_with_nickname
+              = render Users::NameWithAvatarComponent.new(user: @batch.owner)
 
         .flex
           %dl.flex.flex-col.gap-y-1
@@ -48,9 +46,6 @@
               = @batch.memberships.nicknames_alphabetically.each do |membership|
                 - body.row do |row|
                   - row.column do
-                    .flex.items-center.gap-x-4
-                      .h-8.w-8
-                        = render Users::AvatarComponent.new(membership.user)
-                      = membership.user.decorate.display_name_with_nickname
+                    = render Users::NameWithAvatarComponent.new(user: membership.user)
                   - row.column { membership.role }
                   - row.column

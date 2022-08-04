@@ -1,0 +1,30 @@
+%div{ "data-controller": "batches--add-member-form", "data-batches--add-member-form-unselected-class": "batches--add-member-form--user-unselected", "data-batches--add-member-form-selected-class": "batches--add-member-form--user-selected", "data-batches--add-member-form-user-selected-text-value": "Unselect", "data-batches--add-member-form-user-unselected-text-value": "Select"}
+  .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
+    = form_with(url: url_for, method: :get) do |f|
+      .flex.flex-col.space-y-8
+        .w-full
+          = f.label :user_search_query, "Search users", class: "label"
+          .flex.rounded-lg.shadow-sm
+            .relative.flex.items-stretch.flex-grow.focus-within:z-10
+              = f.text_field :user_search_query, required: true, class: "focus:ring-purple-500 focus:border-purple-500 block w-full rounded-none rounded-l-lg border-gray-300 text-xl p-4", value: user_search_query
+
+            = f.button type: :submit, class: "-ml-px relative inline-flex items-center space-x-2 px-8 py-4 border border-gray-300 text-xl rounded-r-lg cool-bg-gradient text-white opacity-80 hover:opacity-100 transition focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500" do
+              .h-6.w-6
+                = heroicon :search
+              %span Search
+
+        - if user_searched?
+          .flex.flex-col
+            .label Search results
+            - if found_users.any?
+              %ul.border.border-gray-200.rounded-lg.divide-y.divide-gray-200
+                - found_users.each do |user|
+                  %li.p-4.flex.items-center.justify-between{ }
+                    = render Users::NameWithAvatarComponent.new(user:)
+                    = button_tag "Select", type: :button, class: "border border-gray-200 rounded-lg py-2 px-8 transition", "data-action": "batches--add-member-form#toggleSelect", "data-batches--add-member-form-user-id-param": user.id, "data-batches--add-member-form-target": "selectButton"
+            - else
+              No search result
+
+        .flex.flex-col.hidden
+          .label Selected users
+          %ul.border.border-gray-200.rounded-lg.divide-y.divide-gray-200
