@@ -49,11 +49,3 @@
 .gray-button {
   @apply py-2 pl-7 pr-8 bg-gray-600 text-white text-xl rounded-lg flex items-center gap-x-2 hover:bg-gray-500 transition;
 }
-
-.batches--add-member-form--user-unselected {
-  @apply bg-white hover:bg-green-600 hover:text-white
-}
-
-.batches--add-member-form--user-selected {
-  @apply bg-purple-600 text-white hover:bg-gray-300 hover:text-black;
-}

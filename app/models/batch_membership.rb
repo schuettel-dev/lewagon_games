@@ -3,9 +3,9 @@ class BatchMembership < ApplicationRecord
   belongs_to :user
 
   enum role: {
-    owner: "owner",
+    student: "student",
     teacher: "teacher",
-    student: "student"
+    owner: "owner"
   }, _prefix: "role"
 
   validates :user_id, uniqueness: { scope: :batch_id }

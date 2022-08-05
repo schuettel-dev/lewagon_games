@@ -23,6 +23,9 @@ class Batches::AddMemberFormComponent < ViewComponent::Base
   def search_users
     return if user_search_query.blank?
 
-    User.search(user_search_query).nicknames_alphabetically.limit(10)
+    User.search(user_search_query)
+        .without(@batch.members)
+        .nicknames_alphabetically
+        .limit(10)
   end
 end

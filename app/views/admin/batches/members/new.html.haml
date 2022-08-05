@@ -1,6 +1,0 @@
-= render PageComponent.new do |c|
-  - c.heading("Add member", :user)
-
-  - c.body do
-    .w-full
-      = render Batches::AddMemberFormComponent.new(batch: @batch, users_search_query: params[:user_search_query])

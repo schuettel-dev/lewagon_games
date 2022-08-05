@@ -1,0 +1,12 @@
+%div{ "data-controller": "batches--add-member-button" }
+  %div{ "data-batches--add-member-button-target": "linkToOpenForm" }
+    = link_to new_admin_batch_membership_path(batch), class: "py-2 px-8 bg-green-600 text-white hover:bg-green-500 transition rounded-lg text-base flex items-center gap-x-1", "data-turbo-frame": "batches_add_member_form_component" do
+      .h-4.w-4
+        = heroicon :"plus-sm"
+      Add member
+
+  %div{ "data-batches--add-member-button-target": "buttonToCloseForm" }
+    = button_tag class: "flex items-center gap-x-1", "data-turbo-frame": "batches_add_member_form_component" do
+      .h-4.w-4
+        = heroicon :x
+      Close

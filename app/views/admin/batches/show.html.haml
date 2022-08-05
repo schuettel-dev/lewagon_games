@@ -28,24 +28,16 @@
               = @batch.members.count
 
       .flex.flex-col.w-full.space-y-4
-        .flex.justify-between
+        .flex.justify-between.items-baseline
           %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Members
-          = link_to new_admin_batch_member_path(@batch), class: "py-1 px-4 bg-green-600 text-white hover:bg-green-500 transition rounded text-sm flex items-center gap-x-1" do
-            .h-4.w-4
-              = heroicon :"plus-sm"
-            Add member
+
+          .flex
+            = turbo_frame_tag :batches_add_member_button_component do
+              = render Batches::AddMemberButtonComponent.new(batch: @batch)
 
         .w-full
-          = render TableComponent.new do |table|
-            - table.header do |header|
-              - header.column { "User" }
-              - header.column { "Role" }
-              - header.column
+          = turbo_frame_tag :batches_add_member_form_component
 
-            - table.body do |body|
-              = @batch.memberships.nicknames_alphabetically.each do |membership|
-                - body.row do |row|
-                  - row.column do
-                    = render Users::NameWithAvatarComponent.new(user: membership.user)
-                  - row.column { membership.role }
-                  - row.column
+        .w-full
+          = turbo_frame_tag :batches_members_table_component do
+            = render Batches::MembersTableComponent.new(batch: @batch)
