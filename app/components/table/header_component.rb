@@ -4,7 +4,7 @@ class Table::HeaderComponent < ViewComponent::Base
   class ColumnComponent < ViewComponentWithOptions
     def defaults
       {
-        class: "whitespace-nowrap p-4 text-left text-sm font-semibold text-gray-900 text-xl"
+        class: "whitespace-nowrap p-4 text-left font-semibold text-gray-900"
       }
     end
 
