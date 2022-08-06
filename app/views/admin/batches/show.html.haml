@@ -28,12 +28,11 @@
               = @batch.members.count
 
       .flex.flex-col.w-full.space-y-4
-        .flex.justify-between.items-baseline
+        .flex.justify-between.items-center
           %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Members
 
           .flex
-            = turbo_frame_tag :batches_add_member_button_component do
-              = render Batches::AddMemberButtonComponent.new(batch: @batch)
+            = render Batches::AddMemberButtonComponent.new(batch: @batch)
 
         .w-full
           = turbo_frame_tag :batches_add_member_form_component

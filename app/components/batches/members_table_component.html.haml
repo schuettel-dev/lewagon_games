@@ -10,6 +10,9 @@
         - row.column do
           = render Users::NameWithAvatarComponent.new(user: membership.user)
         - row.column { membership.role }
-        - row.column(class: "text-right") do
+        - row.column(class: "flex justify-end") do
           - unless membership.role_owner?
-            = button_to "Remove", admin_batch_membership_path(@batch, membership), method: :delete, "data-turbo-confirm": "Are you sure?", class: "py-2 px-4 border border-gray-200 rounded-lg hover:bg-red-500 hover:text-white transition"
+            = button_to admin_batch_membership_path(@batch, membership), method: :delete, form: { "data-turbo-confirm": "Are you sure?" }, class: "py-2 px-4 border border-gray-200 rounded-lg hover:bg-red-500 hover:text-white transition flex items-center gap-x-1" do
+              .h-4.w-4
+                = heroicon :"minus-sm"
+              Remove

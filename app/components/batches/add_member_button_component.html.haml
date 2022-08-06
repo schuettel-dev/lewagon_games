@@ -1,12 +1,12 @@
-%div{ "data-controller": "batches--add-member-button" }
-  %div{ "data-batches--add-member-button-target": "linkToOpenForm" }
-    = link_to new_admin_batch_membership_path(batch), class: "py-2 px-8 bg-green-600 text-white hover:bg-green-500 transition rounded-lg text-base flex items-center gap-x-1", "data-turbo-frame": "batches_add_member_form_component" do
+%div{ "data-controller": "closeable", "data-closeable-after-appearance-of-value": "batches-addMemberForm", class: "flex items-center" }
+  %div{ "data-closeable-target": "openingElement" }
+    = link_to new_admin_batch_membership_path(batch), class: "py-2 px-6 bg-green-600 text-white hover:bg-green-500 transition rounded-lg text-base flex items-center gap-x-1", "data-turbo-frame": "batches_add_member_form_component" do
       .h-4.w-4
-        = heroicon :"plus-sm"
+        = heroicon :"plus"
       Add member
 
-  %div{ "data-batches--add-member-button-target": "buttonToCloseForm" }
-    = button_tag class: "flex items-center gap-x-1", "data-turbo-frame": "batches_add_member_form_component" do
+  %div.hidden{ "data-closeable-target": "closingElement" }
+    = button_tag class: "py-2 px-6 rounded-lg text-base bg-white flex items-center gap-x-1 ring-1 ring-gray-300", "data-action": "closeable#close" do
       .h-4.w-4
         = heroicon :x
       Close
