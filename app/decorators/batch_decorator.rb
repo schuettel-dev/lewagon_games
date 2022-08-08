@@ -10,4 +10,8 @@ class BatchDecorator < ApplicationDecorator
   def display_location
     location
   end
+
+  def display_users_count
+    users.size
+  end
 end

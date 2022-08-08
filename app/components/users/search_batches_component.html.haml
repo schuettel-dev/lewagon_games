@@ -1,0 +1,23 @@
+%data{ "data-controller": "appearable", "data-appearable-name-value": "users-addToBatchForm" }
+  .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
+    .flex.flex-col.gap-y-8
+      = render Forms::SearchFormComponent.new(url: url_for, label_text: "Search batches")
+
+      - if search_performed?
+        .flex.flex-col
+          .label Search results
+          - if found_batches.any?
+            %ul.border.border-gray-200.rounded-lg.divide-y.divide-gray-200
+              - found_batches.each do |batch|
+                %li.p-4.grid.grid-cols-3.content-center
+                  .flex.text-xl.items-center
+                    = batch.decorate.display_name
+
+                  .flex.text-xl.items-center
+                    = batch.decorate.display_location
+
+                  .flex.items-center.justify-end
+                    = render Users::ToggleMembershipComponent.new(user:, batch:)
+
+          - else
+            No search result

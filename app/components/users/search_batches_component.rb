@@ -1,4 +1,4 @@
-class Users::AddToBatchFormComponent < ViewComponent::Base
+class Users::SearchBatchesComponent < ViewComponent::Base
   include HeroiconHelper
 
   attr_reader :user
@@ -8,7 +8,7 @@ class Users::AddToBatchFormComponent < ViewComponent::Base
     @params = params
   end
 
-  def batch_searched?
+  def search_performed?
     !found_batches.is_a?(Array)
   end
 
@@ -16,16 +16,16 @@ class Users::AddToBatchFormComponent < ViewComponent::Base
     @found_batches ||= search_batches || []
   end
 
-  def batches_search_query
-    @params[:batches_search_query].presence
+  def search_query
+    @params[:search_query].presence
   end
 
   private
 
   def search_batches
-    return if batches_search_query.blank?
+    return if search_query.blank?
 
-    Batch.search(batches_search_query)
+    Batch.search(search_query)
          .without(@user.batches)
          .ordered_by_name
          .limit(10)

@@ -1,0 +1,11 @@
+- info_component = Users::InfoComponent.new(user: @user)
+= turbo_stream.replace(info_component.to_dom_id) do
+  = render info_component
+
+- toggle_membership_component = Users::ToggleMembershipComponent.new(user: @user, batch: @batch)
+= turbo_stream.replace(toggle_membership_component.to_dom_id) do
+  = render toggle_membership_component
+
+- batches_table_component = Users::BatchesTableComponent.new(user: @user)
+= turbo_stream.replace(batches_table_component.to_dom_id) do
+  = render batches_table_component

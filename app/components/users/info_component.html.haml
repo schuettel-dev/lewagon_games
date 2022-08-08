@@ -1,0 +1,11 @@
+= turbo_frame_tag to_dom_id do
+  .w-full.grid.grid-cols-3.border.rounded-lg.p-8.bg-white
+    .flex
+      = render InfoFactComponent.new do |c|
+        - c.term { "Nickname" }
+        - c.description { render Users::NameWithAvatarComponent.new(user: @user) }
+
+    .flex
+      = render InfoFactComponent.new do |c|
+        - c.term { "Batches" }
+        - c.with_description.with_content(@user.decorate.display_batches_count)

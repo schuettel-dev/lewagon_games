@@ -5,10 +5,13 @@ class Admin::Users::MembershipsController < ApplicationController
   end
 
   def create
-    batch = Batch.find(params[:batch_id])
+    @batch = Batch.find(params[:batch_id])
 
-    if @user.memberships.find_or_create_by(batch:)
-      redirect_to [:admin, @user]
+    if @user.memberships.find_or_create_by(batch: @batch)
+      respond_to do |format|
+        format.turbo_stream { render :update }
+        format.html { redirect_to [:admin, @user] }
+      end
     else
       render :new
     end
@@ -16,9 +19,13 @@ class Admin::Users::MembershipsController < ApplicationController
 
   def destroy
     membership = @user.memberships.find(params[:id])
+    @batch = membership.batch
     membership.destroy
 
-    redirect_to [:admin, @user]
+    respond_to do |format|
+      format.turbo_stream { render :update }
+      format.html { redirect_to [:admin, @user] }
+    end
   end
 
   private

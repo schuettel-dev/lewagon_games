@@ -43,9 +43,25 @@
 }
 
 .green-button {
-  @apply py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-lg flex items-center gap-x-2 hover:bg-green-500 transition;
+  @apply py-2 pl-7 pr-8 bg-green-600 text-white rounded-lg flex items-center gap-x-2 hover:bg-green-500 transition;
 }
 
 .gray-button {
-  @apply py-2 pl-7 pr-8 bg-gray-600 text-white text-xl rounded-lg flex items-center gap-x-2 hover:bg-gray-500 transition;
+  @apply py-2 pl-7 pr-8 bg-gray-600 text-white rounded-lg flex items-center gap-x-2 hover:bg-gray-500 transition;
+}
+
+.white-button {
+  @apply py-2 pl-7 pr-8 bg-white text-gray-800 rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+}
+
+.white-dangerous-button {
+  @apply py-2 pl-7 pr-8 bg-white text-gray-800 rounded-lg flex items-center gap-x-2 hover:bg-red-500 hover:text-white transition ring-1 ring-gray-300;
+}
+
+.fuchsia-button {
+  @apply py-2 pl-7 pr-8 bg-fuchsia-600 text-white rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+}
+
+.fuchsia-button[disabled] {
+  @apply hover:bg-fuchsia-600 cursor-default;
 }

@@ -1,12 +1,14 @@
-class Batches::AddUserFormComponent < ViewComponent::Base
+class Batches::SearchUsersComponent < ViewComponent::Base
   include HeroiconHelper
+
+  attr_reader :batch
 
   def initialize(batch:, **params)
     @batch = batch
     @params = params
   end
 
-  def user_searched?
+  def search_performed?
     !found_users.is_a?(Array)
   end
 
@@ -14,16 +16,16 @@ class Batches::AddUserFormComponent < ViewComponent::Base
     @found_users ||= search_users || []
   end
 
-  def users_search_query
-    @params[:users_search_query].presence
+  def search_query
+    @params[:search_query].presence
   end
 
   private
 
   def search_users
-    return if users_search_query.blank?
+    return if search_query.blank?
 
-    User.search(users_search_query)
+    User.search(search_query)
         .without(@batch.users)
         .nicknames_alphabetically
         .limit(10)

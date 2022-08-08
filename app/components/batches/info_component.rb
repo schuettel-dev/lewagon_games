@@ -1,7 +1,5 @@
-class Batches::UsersTableComponent < ViewComponent::Base
+class Batches::InfoComponent < ViewComponent::Base
   include Turbo::FramesHelper
-  include HeroiconHelper
-
   attr_reader :batch
 
   def initialize(batch:)
@@ -9,6 +7,6 @@ class Batches::UsersTableComponent < ViewComponent::Base
   end
 
   def to_dom_id
-    "#{dom_id(batch)}__users_table_component"
+    "#{dom_id(batch)}__info_component"
   end
 end

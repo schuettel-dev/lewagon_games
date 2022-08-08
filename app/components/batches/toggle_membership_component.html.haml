@@ -1,0 +1,14 @@
+= turbo_frame_tag to_dom_id do
+  - if already_user?
+    = button_to admin_batch_membership_path(batch, membership), method: :delete, form: { "data-turbo-confirm": "Are you sure?" }, class: "white-dangerous-button" do
+      .h-4.w-4
+        = heroicon :"minus-sm"
+      Remove
+
+  - else
+    = form_with(url: admin_batch_memberships_path(batch)) do |f|
+      = f.hidden_field :user_id, value: user.id
+      = f.button type: :submit, class: "white-button", "data-turbo-frame": "_top" do
+        .h-4.w-4
+          = heroicon :plus
+        Add

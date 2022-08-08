@@ -2,11 +2,11 @@
 
 require "test_helper"
 
-class Users::AddToBatchFormComponentTest < ViewComponent::TestCase
+class Batches::InfoComponentTest < ViewComponent::TestCase
   def test_component_renders_something_useful
     # assert_equal(
     #   %(<span>Hello, components!</span>),
-    #   render_inline(Users::AddToBatchFormComponent.new(message: "Hello, components!")).css("span").to_html
+    #   render_inline(Batches::InfoComponent.new(message: "Hello, components!")).css("span").to_html
     # )
   end
 end
