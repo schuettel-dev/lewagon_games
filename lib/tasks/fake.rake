@@ -8,8 +8,7 @@ namespace :fake do
     1000.times do
       name = Faker::Name.name
       User.create!(
-        provider: :github,
-        uid: Faker::Number.unique.number(digits: 10),
+        github_id: Faker::Number.unique.number(digits: 10),
         nickname: "#{name.parameterize(separator: ".")}--#{Faker::Alphanumeric.alpha(number: 3)}",
         name:,
         image_url: DEFAULT_IMAGE_URL,

@@ -6,4 +6,8 @@ class BatchDecorator < ApplicationDecorator
   def display_name
     name
   end
+
+  def display_location
+    location
+  end
 end

@@ -2,7 +2,7 @@ class Batch < ApplicationRecord
   scope :names_alphabetically, -> { order(name: :asc) }
 
   has_many :memberships, class_name: "BatchMembership"
-  has_many :members, through: :memberships, source: :user
+  has_many :users, through: :memberships
 
   has_one :owner_membership, -> { role_owner }, class_name: "BatchMembership"
   has_one :owner, through: :owner_membership, source: :user
@@ -11,6 +11,13 @@ class Batch < ApplicationRecord
 
   validates :name, :location, presence: true
   validates :name, :url_identifier, uniqueness: true
+
+  scope :search, ->(query) {
+    return none if query.blank?
+
+    where("(UPPER(name) LIKE :query OR UPPER(location) LIKE :query)", query: "%#{query.upcase}%")
+  }
+  scope :ordered_by_name, -> { order(name: :asc) }
 
   def owner=(user)
     memberships.find_or_initialize_by(role: :owner).tap do |membership|

@@ -1,6 +1,5 @@
 lxxxvi:
-  provider: "github"
-  uid: "1409672"
+  github_id: "1409672"
   nickname: "lxxxvi"
   name: "Mario"
   image_url: "https://avatars.githubusercontent.com/u/1409672?v=4"

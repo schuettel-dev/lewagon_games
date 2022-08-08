@@ -11,7 +11,8 @@ class BatchMembership < ApplicationRecord
   validates :user_id, uniqueness: { scope: :batch_id }
   validate :single_owner, if: :role_owner?
 
-  scope :nicknames_alphabetically, -> { joins(:user).order("users.nickname ASC") }
+  scope :user_nicknames_alphabetically, -> { joins(:user).order("users.nickname ASC") }
+  scope :batch_names_alphabetically, -> { joins(:batch).order("batches.name ASC") }
 
   private
 

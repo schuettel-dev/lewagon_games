@@ -25,18 +25,23 @@
           %dl.flex.flex-col.gap-y-1
             %dt.text-lg.font-bold Members
             %dt.text-2xl.flex.space-x-2.items-center.gap-x-2
-              = @batch.members.count
+              = @batch.users.count
 
       .flex.flex-col.w-full.space-y-4
         .flex.justify-between.items-center
           %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Members
 
           .flex
-            = render Batches::AddMemberButtonComponent.new(batch: @batch)
+            = render CloseableButtonComponent.new(closeable_after: "batches-addUserForm") do |c|
+              - c.opening_element do
+                = link_to new_admin_batch_membership_path(@batch), class: "py-2 px-6 bg-green-600 text-white hover:bg-green-500 transition rounded-lg text-base flex items-center gap-x-1", "data-turbo-frame": "batches__add_user_form_component" do
+                  .h-4.w-4
+                    = heroicon :"plus"
+                  Add member
 
         .w-full
-          = turbo_frame_tag :batches_add_member_form_component
+          = turbo_frame_tag :batches__add_user_form_component
 
         .w-full
-          = turbo_frame_tag :batches_members_table_component do
-            = render Batches::MembersTableComponent.new(batch: @batch)
+          = turbo_frame_tag :batches__users_table_component do
+            = render Batches::UsersTableComponent.new(batch: @batch)

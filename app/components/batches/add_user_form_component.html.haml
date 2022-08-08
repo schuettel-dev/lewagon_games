@@ -1,13 +1,13 @@
-%data{ "data-controller": "appearable", "data-appearable-name-value": "batches-addMemberForm" }
+%data{ "data-controller": "appearable", "data-appearable-name-value": "batches-addUserForm" }
   .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
     .flex.flex-col.gap-y-8
       = form_with(url: url_for, method: :get) do |f|
         .flex.flex-col.space-y-8
           .w-full
-            = f.label :user_search_query, "Search users", class: "label sr-only"
+            = f.label :users_search_query, "Search users", class: "label sr-only"
             .flex.rounded-lg.shadow-sm
               .relative.flex.items-stretch.flex-grow.focus-within:z-10
-                = f.text_field :user_search_query, required: true, placeholder: "Search users", class: "focus:ring-purple-500 focus:border-purple-500 block w-full rounded-none rounded-l-lg border-gray-300 text-xl px-4 py-2", value: user_search_query
+                = f.text_field :users_search_query, required: true, placeholder: "Search users", class: "focus:ring-purple-500 focus:border-purple-500 block w-full rounded-none rounded-l-lg border-gray-300 text-xl px-4 py-2", value: users_search_query
 
               = f.button type: :submit, class: "-ml-px relative inline-flex items-center space-x-2 px-8 py-2 border border-gray-300 text-xl rounded-r-lg cool-bg-gradient text-white opacity-80 hover:opacity-100 transition focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500" do
                 .h-6.w-6

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :batches, only: [:index, :show, :new, :create, :update, :edit] do
       resources :memberships, only: [:new, :create, :destroy], module: :batches
     end
-    resources :users
+    resources :users do
+      resources :memberships, only: [:new, :create, :destroy], module: :users
+    end
   end
   root to: "dashboards#show"
 

@@ -12,7 +12,7 @@ class Admin::AddGithubUserForm < ApplicationForm
   def save
     return unless valid?
 
-    @object = User.github_users.find_or_initialize_by(uid: github_user.id).tap do |user|
+    @object = User.find_or_initialize_by(github_id: github_user.id).tap do |user|
       user.assign_attributes(github_user.to_user_params)
     end
 

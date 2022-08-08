@@ -14,8 +14,7 @@ class GithubUserFinder
 
     def to_user_params
       {
-        provider: :github,
-        uid: id,
+        github_id: id,
         nickname: params["login"],
         name: params["name"],
         image_url: params["avatar_url"]

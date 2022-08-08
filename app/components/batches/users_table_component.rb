@@ -1,4 +1,4 @@
-class Batches::MembersTableComponent < ViewComponent::Base
+class Batches::UsersTableComponent < ViewComponent::Base
   include HeroiconHelper
 
   attr_reader :batch

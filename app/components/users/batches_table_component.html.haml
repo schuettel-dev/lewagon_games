@@ -1,0 +1,19 @@
+= render TableComponent.new do |table|
+  - table.header do |header|
+    - header.column(class: "text-lg") { "Batch" }
+    - header.column(class: "text-lg") { "Location" }
+    - header.column(class: "text-lg") { "Role" }
+    - header.column
+
+  - table.body do |body|
+    = user.memberships.batch_names_alphabetically.each do |membership|
+      - body.row do |row|
+        - row.column(class: "text-2xl") { membership.batch.decorate.display_name }
+        - row.column(class: "text-2xl") { membership.batch.decorate.display_location }
+        - row.column(class: "text-2xl") { membership.decorate.display_role }
+        - row.column(class: "flex justify-end") do
+          - unless membership.role_owner?
+            = button_to admin_user_membership_path(user, membership), method: :delete, form: { "data-turbo-confirm": "Are you sure?" }, class: "py-2 px-4 border border-gray-200 rounded-lg hover:bg-red-500 hover:text-white transition flex items-center gap-x-1" do
+              .h-4.w-4
+                = heroicon :"minus-sm"
+              Remove
