@@ -9,13 +9,19 @@
 
   - c.body do
     .w-full
+      .flex.justify-content.items-center
+        .grow
+          = raw pagy_nav(@pagy)
+        .flex.items-center
+          = render Forms::ResetSearchComponent.new(url: url_for)
+          = render Forms::SearchFormComponent.new(url: url_for, label_text: "Search users")
       = render TableComponent.new do |table|
         - table.header do |header|
-          - header.column
-          - header.column { "Nickname" }
-          - header.column { "Name" }
-          - header.column { "Admin" }
-          - header.column
+          - header.column(class: "w-1/12")
+          - header.column(class: "w-1/3") { "Nickname" }
+          - header.column(class: "w-1/3") { "Name" }
+          - header.column(class: "w-1/6") { "Admin" }
+          - header.column(class: "w-1/12")
 
         - table.body do |body|
           - @users.each do |user|
@@ -28,4 +34,4 @@
               - row.column { user.name }
               - row.column { user.admin.to_s }
               - row.column(class: "text-right") do
-                = link_to "Show", admin_user_path(user), class: "link"
+                = link_to "Show", admin_user_path(user), class: "link", "data-turbo-frame": "_top"

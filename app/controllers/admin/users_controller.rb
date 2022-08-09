@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
   def index
-    @users = User.nicknames_alphabetically
+    @pagy, @users = pagy(find_users)
   end
 
   def show
@@ -19,5 +19,13 @@ class Admin::UsersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def find_users
+    users = User.nicknames_alphabetically
+    users = users.search(params[:search_query]) if params[:search_query].present?
+    users
   end
 end

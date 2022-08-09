@@ -83,9 +83,6 @@ GEM
     bootsnap (1.12.0)
       msgpack (~> 1.2)
     builder (3.2.4)
-    cable_ready (4.5.0)
-      rails (>= 5.2)
-      thread-local (>= 1.1.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -193,6 +190,8 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -286,18 +285,11 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
-    stimulus_reflex (3.4.1)
-      cable_ready (>= 4.5)
-      nokogiri
-      rack
-      rails (>= 5.2)
-      redis
     strscan (3.0.3)
     tailwindcss-rails (2.0.10-arm64-darwin)
       railties (>= 6.0.0)
     temple (0.8.2)
     thor (1.2.1)
-    thread-local (1.1.0)
     tilt (2.0.11)
     timeout (0.3.0)
     turbo-rails (1.1.1)
@@ -344,6 +336,7 @@ DEPENDENCIES
   jbuilder
   omniauth-github!
   omniauth-rails_csrf_protection
+  pagy
   pg
   puma
   pundit
@@ -356,7 +349,6 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
-  stimulus_reflex
   tailwindcss-rails
   turbo-rails
   tzinfo-data
