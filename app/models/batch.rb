@@ -1,6 +1,4 @@
 class Batch < ApplicationRecord
-  scope :names_alphabetically, -> { order(name: :asc) }
-
   has_many :memberships, class_name: "BatchMembership"
   has_many :users, through: :memberships
 

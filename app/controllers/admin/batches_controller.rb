@@ -2,7 +2,7 @@ class Admin::BatchesController < ApplicationController
   before_action :set_batch, only: [:show, :edit, :update, :destroy]
 
   def index
-    @batches = Batch.names_alphabetically
+    @pagy, @batches = pagy(find_batches)
   end
 
   def show; end
@@ -39,5 +39,11 @@ class Admin::BatchesController < ApplicationController
 
   def set_batch
     @batch = Batch.find_by!(url_identifier: params[:id])
+  end
+
+  def find_batches
+    batches = Batch.eager_load(:memberships).ordered_by_name
+    batches = batches.search(params[:search_query]) if params[:search_query].present?
+    batches
   end
 end

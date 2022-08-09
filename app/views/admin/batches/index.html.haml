@@ -9,16 +9,25 @@
 
   - c.body do
     .w-full
+      .flex.justify-content.items-center
+        .grow
+          = raw pagy_nav(@pagy)
+        .flex.items-center.gap-x-2
+          = render Forms::ResetSearchComponent.new(url: url_for)
+          = render Forms::SearchFormComponent.new(url: url_for, label_text: "Search batches")
+
       = render TableComponent.new do |table|
         - table.header do |header|
-          - header.column { "Name" }
-          - header.column { "Location" }
-          - header.column
+          - header.column(class: "w-1/12") { "Name" }
+          - header.column(class: "w-1/2") { "Location" }
+          - header.column(class: "w-1/3") { "Members" }
+          - header.column(class: "w-1/12")
 
         - table.body do |body|
           - @batches.each do |batch|
             - body.row do |row|
               - row.column { batch.name }
               - row.column { batch.location }
+              - row.with_column.with_content(batch.memberships.size)
               - row.column(class: "text-right") do
                 = link_to "Show", admin_batch_path(batch), class: "link"
