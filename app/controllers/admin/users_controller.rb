@@ -24,7 +24,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def find_users
-    users = User.nicknames_alphabetically
+    users = User.eager_load(:memberships).nicknames_alphabetically
     users = users.search(params[:search_query]) if params[:search_query].present?
     users
   end
