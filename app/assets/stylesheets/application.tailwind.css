@@ -30,6 +30,10 @@
   @apply w-full rounded-lg border border-gray-300 p-4 text-xl;
 }
 
+.select {
+  @apply w-full rounded-lg border border-gray-300 p-2 text-xl;
+}
+
 .submit {
   @apply border-2 border-fuchsia-500 p-3 bg-fuchsia-300 cursor-pointer hover:bg-fuchsia-400 transition;
 }
@@ -64,6 +68,16 @@
 
 .fuchsia-button[disabled] {
   @apply hover:bg-fuchsia-600 cursor-default;
+}
+
+@keyframes to-transparent {
+  from {}
+  to {background-color: transparent}
+}
+
+.saved-animation {
+  background-color: theme(colors.green.500);
+  animation: to-transparent 1s ease-out forwards;
 }
 
 /* pagy */

@@ -1,4 +1,6 @@
 class Batches::UsersTableComponent < ViewComponent::Base
+  # include Pundit::Authorization
+  include ApplicationController::HelperMethods
   include Turbo::FramesHelper
   include HeroiconHelper
 

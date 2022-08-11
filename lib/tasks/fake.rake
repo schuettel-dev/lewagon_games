@@ -12,7 +12,7 @@ namespace :fake do
         nickname: "#{name.parameterize(separator: ".")}--#{Faker::Alphanumeric.alpha(number: 3)}",
         name:,
         image_url: DEFAULT_IMAGE_URL,
-        admin: (index % 100).zero?
+        superadmin: (index % 100).zero?
       )
     end
   end

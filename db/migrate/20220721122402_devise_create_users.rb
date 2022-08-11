@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.0]
       t.string :nickname, null: false
       t.string :name, null: true
       t.string :image_url, null: false
-      t.boolean :admin, null: false, default: false
+      t.boolean :superadmin, null: false, default: false
       t.timestamps null: false
     end
 

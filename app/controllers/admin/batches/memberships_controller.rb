@@ -1,5 +1,5 @@
 class Admin::Batches::MembershipsController < ApplicationController
-  before_action :set_batch, only: [:new, :create, :destroy]
+  before_action :set_batch, only: [:new, :create, :destroy, :update]
 
   def new
   end
@@ -10,11 +10,21 @@ class Admin::Batches::MembershipsController < ApplicationController
     if @batch.memberships.find_or_create_by(user: @user)
       @batch.reload
       respond_to do |format|
-        format.turbo_stream { render :update }
+        format.turbo_stream { render :update_all }
         format.html { redirect_to [:admin, @batch] }
       end
     else
       render :new
+    end
+  end
+
+  def update
+    @membership = @batch.memberships.find(params[:id])
+    @membership.update!(role: params[:batch_membership][:role])
+
+    respond_to do |format|
+      format.turbo_stream { render :update }
+      format.html { redirect_to admin_batch_path(@batch) }
     end
   end
 
@@ -25,7 +35,7 @@ class Admin::Batches::MembershipsController < ApplicationController
 
     respond_to do |format|
       @batch.reload
-      format.turbo_stream { render :update }
+      format.turbo_stream { render :update_all }
       format.html { redirect_to [:admin, @batch] }
     end
   end

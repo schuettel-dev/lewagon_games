@@ -3,4 +3,4 @@ lxxxvi:
   nickname: "lxxxvi"
   name: "Mario"
   image_url: "https://avatars.githubusercontent.com/u/1409672?v=4"
-  admin: true
+  superadmin: true

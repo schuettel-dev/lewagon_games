@@ -21,11 +21,24 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by!(github_id: params[:id])
+    if @user.update(update_user_params)
+      redirect_to admin_users_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def find_users
     users = User.eager_load(:memberships).nicknames_alphabetically
     users = users.search(params[:search_query]) if params[:search_query].present?
     users
+  end
+
+  def update_user_params
+    params.require(:admin_user).permit(:role)
   end
 end

@@ -1,0 +1,3 @@
+= turbo_frame_tag to_dom_id do
+  = form_with(model: membership, url: admin_batch_membership_path(batch, membership), method: :patch) do |f|
+    = f.select :role, BatchMembershipDecorator.roles_as_options, {}, class: css_classes, onchange: "this.form.requestSubmit()"

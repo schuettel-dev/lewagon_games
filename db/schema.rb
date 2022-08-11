@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
     t.string "nickname", null: false
     t.string "name"
     t.string "image_url", null: false
-    t.boolean "admin", default: false, null: false
+    t.boolean "superadmin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["github_id"], name: "index_users_on_github_id", unique: true
