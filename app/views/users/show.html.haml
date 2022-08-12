@@ -13,7 +13,7 @@
           .flex
             = render CloseableButtonComponent.new(closeable_after: "users-addToBatchForm") do |c|
               - c.opening_element do
-                = link_to new_admin_user_membership_path(@user), class: "green-button", "data-turbo-frame": "users__add_to_batch_form_component" do
+                = link_to new_user_membership_path(@user), class: "green-button", "data-turbo-frame": "users__add_to_batch_form_component" do
                   .h-4.w-4
                     = heroicon :"plus"
                   Add to batch

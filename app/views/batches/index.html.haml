@@ -2,7 +2,7 @@
   - c.heading("Batches", :hashtag)
 
   - c.actions do
-    = link_to new_admin_batch_path, class: "green-button" do
+    = link_to new_batch_path, class: "green-button" do
       .h-6.w-6
         = heroicon :"plus-sm"
       New batch
@@ -30,4 +30,4 @@
               - row.column { batch.location }
               - row.with_column.with_content(batch.memberships.size)
               - row.column(class: "text-right") do
-                = link_to "Show", admin_batch_path(batch), class: "link"
+                = link_to "Show", batch_path(batch), class: "link"

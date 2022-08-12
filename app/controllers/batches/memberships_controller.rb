@@ -1,4 +1,4 @@
-class Admin::Batches::MembershipsController < ApplicationController
+class Batches::MembershipsController < ApplicationController
   before_action :set_batch, only: [:new, :create, :destroy, :update]
 
   def new
@@ -24,7 +24,7 @@ class Admin::Batches::MembershipsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream { render :update }
-      format.html { redirect_to admin_batch_path(@batch) }
+      format.html { redirect_to batch_path(@batch) }
     end
   end
 
@@ -36,7 +36,7 @@ class Admin::Batches::MembershipsController < ApplicationController
     respond_to do |format|
       @batch.reload
       format.turbo_stream { render :update_all }
-      format.html { redirect_to [:admin, @batch] }
+      format.html { redirect_to @batch }
     end
   end
 

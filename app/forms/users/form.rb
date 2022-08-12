@@ -1,4 +1,4 @@
-class Admin::AddGithubUserForm < ApplicationForm
+class Users::Form < ApplicationForm
   SUBMIT = {
     new: {
       icon: "plus-sm",
@@ -20,13 +20,13 @@ class Admin::AddGithubUserForm < ApplicationForm
   end
 
   def self.model_name
-    ActiveModel::Name.new(self, nil, "Admin::User")
+    ActiveModel::Name.new(self, nil, "User")
   end
 
   def user_params
-    return {} unless params.key?(:admin_user)
+    return {} unless params.key?(:user)
 
-    params.require(:admin_user).permit(:github_nickname)
+    params.require(:user).permit(:github_nickname)
   end
 
   def github_nickname
@@ -34,7 +34,7 @@ class Admin::AddGithubUserForm < ApplicationForm
   end
 
   def cancel_path
-    [:admin, object]
+    object
   end
 
   private

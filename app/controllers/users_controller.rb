@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class UsersController < ApplicationController
   def index
     @pagy, @users = pagy(find_users)
   end
@@ -8,14 +8,14 @@ class Admin::UsersController < ApplicationController
   end
 
   def new
-    @form = Admin::AddGithubUserForm.new(User.new, params)
+    @form = Users::Form.new(User.new, params)
   end
 
   def create
-    @form = Admin::AddGithubUserForm.new(User.new, params)
+    @form = Users::Form.new(User.new, params)
 
     if @form.save
-      redirect_to [:admin, @form.object]
+      redirect_to @form.object
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +24,7 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find_by!(github_id: params[:id])
     if @user.update(update_user_params)
-      redirect_to admin_users_path
+      redirect_to users_path
     else
       render :new, status: :unprocessable_entity
     end

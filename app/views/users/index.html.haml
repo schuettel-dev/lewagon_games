@@ -2,7 +2,7 @@
   - c.heading("Users", "user-group")
 
   - c.actions do
-    = link_to new_admin_user_path, class: "py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-xl flex items-center gap-x-1 hover:bg-green-500 transition" do
+    = link_to new_user_path, class: "py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-xl flex items-center gap-x-1 hover:bg-green-500 transition" do
       .h-6.w-6
         = heroicon :"plus-sm"
       New user
@@ -21,7 +21,7 @@
           - header.column(class: "w-1/3") { "Nickname" }
           - header.column(class: "w-1/6") { "Name" }
           - header.column(class: "w-1/6") { "Memberships" }
-          - header.column(class: "w-1/6") { "Admin" }
+          - header.column(class: "w-1/6") { "Superadmin" }
           - header.column(class: "w-1/12")
 
         - table.body do |body|
@@ -34,6 +34,6 @@
               - row.column { user.nickname }
               - row.column { user.name }
               - row.with_column.with_content(user.memberships.size)
-              - row.with_column.with_content(user.admin)
+              - row.with_column.with_content(user.superadmin)
               - row.column(class: "text-right") do
-                = link_to "Show", admin_user_path(user), class: "link", "data-turbo-frame": "_top"
+                = link_to "Show", user_path(user), class: "link", "data-turbo-frame": "_top"

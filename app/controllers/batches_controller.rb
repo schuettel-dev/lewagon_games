@@ -1,4 +1,4 @@
-class Admin::BatchesController < ApplicationController
+class BatchesController < ApplicationController
   before_action :set_batch, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -15,7 +15,7 @@ class Admin::BatchesController < ApplicationController
     @form = Batches::Form.new(Batch.new, params, current_user)
 
     if @form.save
-      redirect_to [:admin, @form.object]
+      redirect_to @form.object
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class Admin::BatchesController < ApplicationController
     @form = Batches::Form.new(@batch, params)
 
     if @form.save
-      redirect_to [:admin, @form.object]
+      redirect_to @form.object
     else
       render :edit, status: :unprocessable_entity
     end

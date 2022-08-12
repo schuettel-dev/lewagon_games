@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   get "/sign_in", to: "sessions#new", as: :new_user_session
 
   resource :dashboard, only: [:show]
-  namespace :admin do
-    resources :batches, only: [:index, :show, :new, :create, :update, :edit] do
-      resources :memberships, only: [:new, :create, :update, :destroy], module: :batches
-    end
-    resources :users do
-      resources :memberships, only: [:new, :create, :destroy], module: :users
-    end
+
+  resources :batches, only: [:index, :show, :new, :create, :update, :edit] do
+    resources :memberships, only: [:new, :create, :update, :destroy], module: :batches
   end
+
+  resources :users do
+    resources :memberships, only: [:new, :create, :destroy], module: :users
+  end
+
   root to: "dashboards#show"
 
   devise_for(:users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" })

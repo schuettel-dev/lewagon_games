@@ -1,4 +1,4 @@
-class Admin::Users::MembershipsController < ApplicationController
+class Users::MembershipsController < ApplicationController
   before_action :set_user, only: [:new, :create, :destroy]
 
   def new
@@ -10,7 +10,7 @@ class Admin::Users::MembershipsController < ApplicationController
     if @user.memberships.find_or_create_by(batch: @batch)
       respond_to do |format|
         format.turbo_stream { render :update }
-        format.html { redirect_to [:admin, @user] }
+        format.html { redirect_to @user }
       end
     else
       render :new
@@ -24,7 +24,7 @@ class Admin::Users::MembershipsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream { render :update }
-      format.html { redirect_to [:admin, @user] }
+      format.html { redirect_to @user }
     end
   end
 

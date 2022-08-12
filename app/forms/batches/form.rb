@@ -33,16 +33,16 @@ class Batches::Form < ApplicationForm
   end
 
   def self.model_name
-    ActiveModel::Name.new(self, nil, "Admin::Batch")
+    ActiveModel::Name.new(self, nil, "Batch")
   end
 
   def batch_params
-    return {} unless params.key?(:admin_batch)
+    return {} unless params.key?(:batch)
 
-    params.require(:admin_batch).permit(:name, :location)
+    params.require(:batch).permit(:name, :location)
   end
 
   def cancel_path
-    [:admin, object]
+    object
   end
 end

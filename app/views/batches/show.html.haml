@@ -1,7 +1,7 @@
 = render PageComponent.new do |c|
   - c.heading(@batch.decorate.display_name_for_heading, :hashtag)
   - c.actions do
-    = link_to edit_admin_batch_path(@batch), class: "gray-button" do
+    = link_to edit_batch_path(@batch), class: "gray-button" do
       .h-6.w-6
         = heroicon :pencil
       Edit
@@ -18,7 +18,7 @@
           .flex
             = render CloseableButtonComponent.new(closeable_after: "batches-addUserForm") do |c|
               - c.opening_element do
-                = link_to new_admin_batch_membership_path(@batch), class: "green-button", "data-turbo-frame": "batches__search_users_component" do
+                = link_to new_batch_membership_path(@batch), class: "green-button", "data-turbo-frame": "batches__search_users_component" do
                   .h-4.w-4
                     = heroicon :"plus"
                   Add member
