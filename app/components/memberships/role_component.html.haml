@@ -1,0 +1,8 @@
+= turbo_frame_tag to_dom_id do
+  - if policy(membership).update?
+    = form_with(model: membership, url: membership_path(membership)) do |f|
+      .inline-flex
+        = f.hidden_field :redirect_url, value: redirect_url
+        = f.select :role, BatchMembershipDecorator.roles_as_options, {}, class: "select", onchange: "this.form.requestSubmit()"
+  - else
+    = membership.decorate.display_role

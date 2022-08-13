@@ -1,4 +1,4 @@
-class Forms::ResetSearchComponent < ViewComponent::Base
+class Forms::ResetSearchComponent < ApplicationComponent
   attr_reader :url
 
   def initialize(url:)

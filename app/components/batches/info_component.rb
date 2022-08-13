@@ -1,5 +1,4 @@
-class Batches::InfoComponent < ViewComponent::Base
-  include Turbo::FramesHelper
+class Batches::InfoComponent < ApplicationComponent
   attr_reader :batch
 
   def initialize(batch:)

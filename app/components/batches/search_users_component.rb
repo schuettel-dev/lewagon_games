@@ -1,6 +1,4 @@
-class Batches::SearchUsersComponent < ViewComponent::Base
-  include HeroiconHelper
-
+class Batches::SearchUsersComponent < ApplicationComponent
   attr_reader :batch
 
   def initialize(batch:, **params)

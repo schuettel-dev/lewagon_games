@@ -1,5 +1,5 @@
 class Batches::MembershipsController < ApplicationController
-  before_action :set_batch, only: [:new, :create, :destroy, :update]
+  before_action :set_batch, only: [:new, :create, :destroy]
 
   def new
   end
@@ -15,16 +15,6 @@ class Batches::MembershipsController < ApplicationController
       end
     else
       render :new
-    end
-  end
-
-  def update
-    @membership = @batch.memberships.find(params[:id])
-    @membership.update!(role: params[:batch_membership][:role])
-
-    respond_to do |format|
-      format.turbo_stream { render :update }
-      format.html { redirect_to batch_path(@batch) }
     end
   end
 

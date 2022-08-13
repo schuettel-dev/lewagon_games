@@ -2,7 +2,7 @@
 = turbo_stream.replace(info_component.to_dom_id) do
   = render info_component
 
-- toggle_membership_component = Batches::ToggleMembershipComponent.new(batch: @batch, user: @user)
+- toggle_membership_component = Batches::MembershipComponent.new(batch: @batch, user: @user)
 = turbo_stream.replace(toggle_membership_component.to_dom_id) do
   = render toggle_membership_component
 

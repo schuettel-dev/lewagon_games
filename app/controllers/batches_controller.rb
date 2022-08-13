@@ -38,11 +38,11 @@ class BatchesController < ApplicationController
   private
 
   def set_batch
-    @batch = Batch.find_by!(url_identifier: params[:id])
+    @batch = policy_scope(Batch).find_by!(url_identifier: params[:id])
   end
 
   def find_batches
-    batches = Batch.eager_load(:memberships).ordered_by_name
+    batches = policy_scope(Batch).eager_load(:memberships).ordered_by_name
     batches = batches.search(params[:search_query]) if params[:search_query].present?
     batches
   end

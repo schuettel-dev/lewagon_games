@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   def index
+    authorize User
     @pagy, @users = pagy(find_users)
   end
 
   def show
-    @user = User.find_by!(github_id: params[:id])
+    @user = users_scope.find_by!(github_id: params[:id])
+    authorize @user
   end
 
   def new
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by!(github_id: params[:id])
+    @user = users_scope.find_by!(github_id: params[:id])
     if @user.update(update_user_params)
       redirect_to users_path
     else
@@ -32,8 +34,12 @@ class UsersController < ApplicationController
 
   private
 
+  def users_scope
+    policy_scope(User)
+  end
+
   def find_users
-    users = User.eager_load(:memberships).nicknames_alphabetically
+    users = users_scope.eager_load(:memberships).nicknames_alphabetically
     users = users.search(params[:search_query]) if params[:search_query].present?
     users
   end

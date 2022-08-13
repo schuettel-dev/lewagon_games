@@ -2,11 +2,11 @@
 
 require "test_helper"
 
-class Users::MembershipComponentTest < ViewComponent::TestCase
+class PagyComponentTest < ViewComponent::TestCase
   def test_component_renders_something_useful
     # assert_equal(
     #   %(<span>Hello, components!</span>),
-    #   render_inline(Users::MembershipComponent.new(message: "Hello, components!")).css("span").to_html
+    #   render_inline(PagyComponent.new(message: "Hello, components!")).css("span").to_html
     # )
   end
 end

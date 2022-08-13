@@ -7,12 +7,14 @@ namespace :fake do
 
     250.times do |index|
       name = Faker::Name.name
+      random_number = rand(1..50)
+      privilege = (random_number == 1) ? "superadmin" : (random_number < 10) ? "admin" : "user"
       User.create!(
         github_id: Faker::Number.unique.number(digits: 10),
         nickname: "#{name.parameterize(separator: ".")}--#{Faker::Alphanumeric.alpha(number: 3)}",
         name:,
         image_url: DEFAULT_IMAGE_URL,
-        superadmin: (index % 100).zero?
+        privilege:
       )
     end
   end

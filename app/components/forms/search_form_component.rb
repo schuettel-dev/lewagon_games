@@ -1,6 +1,4 @@
-class Forms::SearchFormComponent < ViewComponent::Base
-  include HeroiconHelper
-
+class Forms::SearchFormComponent < ApplicationComponent
   attr_reader :url, :label_text
 
   def initialize(url:, label_text:)

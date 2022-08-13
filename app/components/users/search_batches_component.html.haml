@@ -17,7 +17,7 @@
                     = batch.decorate.display_location
 
                   .flex.items-center.justify-end
-                    = render Users::ToggleMembershipComponent.new(user:, batch:)
+                    = render Users::MembershipComponent.new(user:, batch:)
 
           - else
             No search result

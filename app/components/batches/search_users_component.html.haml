@@ -11,6 +11,6 @@
               - found_users.each do |user|
                 %li.p-4.flex.items-center.justify-between
                   = render Users::NameWithAvatarComponent.new(user:)
-                  = render Batches::ToggleMembershipComponent.new(batch:, user:)
+                  = render Batches::MembershipComponent.new(batch:, user:)
           - else
             No search result

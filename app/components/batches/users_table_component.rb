@@ -1,9 +1,4 @@
-class Batches::UsersTableComponent < ViewComponent::Base
-  # include Pundit::Authorization
-  include ApplicationController::HelperMethods
-  include Turbo::FramesHelper
-  include HeroiconHelper
-
+class Batches::UsersTableComponent < ApplicationComponent
   attr_reader :batch
 
   def initialize(batch:)

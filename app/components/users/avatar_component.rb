@@ -1,4 +1,4 @@
-class Users::AvatarComponent < ViewComponent::Base
+class Users::AvatarComponent < ApplicationComponent
   def initialize(user)
     @user = user
   end

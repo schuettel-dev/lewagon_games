@@ -1,6 +1,4 @@
-class PageHeadingComponent < ViewComponent::Base
-  include HeroiconHelper
-
+class PageHeadingComponent < ApplicationComponent
   attr_reader :text, :icon
 
   def initialize(text, icon)

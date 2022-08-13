@@ -1,6 +1,4 @@
-class CloseableButtonComponent < ViewComponent::Base
-  include HeroiconHelper
-
+class CloseableButtonComponent < ApplicationComponent
   renders_one :opening_element
 
   attr_reader :closeable_after

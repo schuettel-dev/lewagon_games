@@ -1,4 +1,2 @@
-class MainNavigationComponent < ViewComponent::Base
-  include Devise::Controllers::Helpers
-  include HeroiconHelper
+class MainNavigationComponent < ApplicationComponent
 end

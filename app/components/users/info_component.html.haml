@@ -9,3 +9,14 @@
       = render InfoFactComponent.new do |c|
         - c.term { "Batches" }
         - c.with_description.with_content(@user.decorate.display_batches_count)
+
+    .flex
+      = render InfoFactComponent.new do |c|
+        - c.term { "Privilege" }
+        - c.with_description do
+          - if policy(@user).update_privilege?
+            = form_with(model: @user, url: user_privileges_path(@user)) do |f|
+              = f.select :privilege, UserDecorator.privilege_options, {}, class: "select", onchange: "this.form.requestSubmit();"
+
+          - else
+            = @user.decorate.display_privilege

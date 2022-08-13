@@ -1,6 +1,4 @@
-class Users::SearchBatchesComponent < ViewComponent::Base
-  include HeroiconHelper
-
+class Users::SearchBatchesComponent < ApplicationComponent
   attr_reader :user
 
   def initialize(user:, **params)

@@ -31,7 +31,7 @@
 }
 
 .select {
-  @apply w-full rounded-lg border border-gray-300 p-2 text-xl;
+  @apply block w-full rounded-lg border border-gray-300 py-2 text-xl;
 }
 
 .submit {
@@ -68,16 +68,6 @@
 
 .fuchsia-button[disabled] {
   @apply hover:bg-fuchsia-600 cursor-default;
-}
-
-@keyframes to-transparent {
-  from {}
-  to {background-color: transparent}
-}
-
-.saved-animation {
-  background-color: theme(colors.green.500);
-  animation: to-transparent 1s ease-out forwards;
 }
 
 /* pagy */

@@ -1,4 +1,4 @@
-class Table::HeaderComponent < ViewComponent::Base
+class Table::HeaderComponent < ApplicationComponent
   renders_many :columns, "ColumnComponent"
 
   class ColumnComponent < ViewComponentWithOptions

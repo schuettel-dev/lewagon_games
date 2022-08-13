@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Privileges
+
   devise :omniauthable, omniauth_providers: %i[github]
 
   has_many :memberships, class_name: "BatchMembership"

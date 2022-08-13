@@ -1,6 +1,8 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
+  delegate :any_admin?, to: :user
+
   def initialize(user, record)
     @user = user
     @record = record
@@ -32,10 +34,6 @@ class ApplicationPolicy
 
   def destroy?
     false
-  end
-
-  def superadmin?
-    @user.superadmin?
   end
 
   class Scope

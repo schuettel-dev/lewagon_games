@@ -1,4 +1,4 @@
-class ViewComponentWithOptions < ViewComponent::Base
+class ViewComponentWithOptions < ApplicationComponent
   attr_reader :options
 
   def initialize(options = {})

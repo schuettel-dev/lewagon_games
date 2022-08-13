@@ -1,3 +1,3 @@
-class MainComponent < ViewComponent::Base
+class MainComponent < ApplicationComponent
   renders_one :body
 end

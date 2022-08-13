@@ -1,7 +1,4 @@
-class Batches::ToggleMembershipComponent < ViewComponent::Base
-  include Turbo::FramesHelper
-  include HeroiconHelper
-
+class Batches::MembershipComponent < ApplicationComponent
   attr_reader :batch, :user
 
   def initialize(batch:, user:)
@@ -10,7 +7,7 @@ class Batches::ToggleMembershipComponent < ViewComponent::Base
   end
 
   def render?
-    !membership&.role_owner?
+    !membership&.role_owner? && policy(membership).maintain?
   end
 
   def to_dom_id

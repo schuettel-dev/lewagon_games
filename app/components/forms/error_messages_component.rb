@@ -1,4 +1,4 @@
-class Forms::ErrorMessagesComponent < ViewComponent::Base
+class Forms::ErrorMessagesComponent < ApplicationComponent
   attr_reader :form, :field
 
   def initialize(form:, field:)

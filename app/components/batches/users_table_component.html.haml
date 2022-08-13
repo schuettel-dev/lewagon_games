@@ -11,10 +11,7 @@
           - row.column(class: "text-2xl") do
             = render Users::NameWithAvatarComponent.new(user: membership.user)
           - row.column(class: "text-2xl") do
-            - if policy(membership).update?
-              = render Batches::UpdateMembershipComponent.new(membership:)
+            = render Memberships::RoleComponent.new(membership:, redirect_url: url_for)
 
-            - else
-              = membership.decorate.display_role
           - row.column(class: "flex justify-end") do
-            = render Batches::ToggleMembershipComponent.new(batch:, user: membership.user)
+            = render Batches::MembershipComponent.new(batch:, user: membership.user)

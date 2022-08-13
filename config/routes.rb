@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
 
   resources :batches, only: [:index, :show, :new, :create, :update, :edit] do
-    resources :memberships, only: [:new, :create, :update, :destroy], module: :batches
+    resources :memberships, only: [:new, :create, :destroy], module: :batches
   end
 
   resources :users do
     resources :memberships, only: [:new, :create, :destroy], module: :users
+    resource :privileges, only: [:update], module: :users
   end
+
+  resources :memberships, only: [:update]
 
   root to: "dashboards#show"
 

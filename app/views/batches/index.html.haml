@@ -11,7 +11,8 @@
     .w-full
       .flex.justify-content.items-center
         .grow
-          = raw pagy_nav(@pagy)
+          = render PagyComponent.new(pagy: @pagy)
+
         .flex.items-center.gap-x-2
           = render Forms::ResetSearchComponent.new(url: url_for)
           = render Forms::SearchFormComponent.new(url: url_for, label_text: "Search batches")

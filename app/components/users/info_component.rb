@@ -1,6 +1,4 @@
-class Users::InfoComponent < ViewComponent::Base
-  include Turbo::FramesHelper
-
+class Users::InfoComponent < ApplicationComponent
   attr_reader :user
 
   def initialize(user:)

@@ -1,7 +1,4 @@
-class Users::BatchesTableComponent < ViewComponent::Base
-  include Turbo::FramesHelper
-  include HeroiconHelper
-
+class Users::BatchesTableComponent < ApplicationComponent
   attr_reader :user
 
   def initialize(user:)

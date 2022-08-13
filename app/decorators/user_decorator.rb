@@ -14,4 +14,12 @@ class UserDecorator < ApplicationDecorator
   def display_batches_count
     batches.size
   end
+
+  def display_privilege
+    privilege.capitalize
+  end
+
+  def self.privilege_options
+    User.privileges.keys.map { [_1.capitalize, _1] }
+  end
 end
