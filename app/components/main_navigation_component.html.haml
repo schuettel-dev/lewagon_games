@@ -4,13 +4,15 @@
       = heroicon :play
       Dashboard
 
-    = link_to batches_path do
-      = heroicon :hashtag
-      Batches
+    - if policy(Batch).index?
+      = link_to batches_path do
+        = heroicon :hashtag
+        Batches
 
-    = link_to users_path do
-      = heroicon :"user-group"
-      Users
+    - if policy(User).index?
+      = link_to users_path do
+        = heroicon :"user-group"
+        Users
 
   .flex.items-center.space-x-4
     = image_tag current_user.image_url, class: "rounded-full h-8 w-8 ring-2 ring-white opacity-90", title: current_user.nickname

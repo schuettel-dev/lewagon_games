@@ -1,9 +1,14 @@
 class BatchPolicy < ApplicationPolicy
   def index?
+    true
+  end
+
+  def show?
+    any_admin? || batch_member?
   end
 
   def create?
-    user.superadmin?
+    any_admin?
   end
 
   def update?
@@ -16,6 +21,10 @@ class BatchPolicy < ApplicationPolicy
 
   def batch_owner?
     record.owner == user
+  end
+
+  def batch_member?
+    record.users.include?(user)
   end
 
   def add_membership?

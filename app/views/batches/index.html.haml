@@ -1,11 +1,12 @@
 = render PageComponent.new do |c|
   - c.heading("Batches", :hashtag)
 
-  - c.actions do
-    = link_to new_batch_path, class: "green-button" do
-      .h-6.w-6
-        = heroicon :"plus-sm"
-      New batch
+  - if policy(Batch).create?
+    - c.actions do
+      = link_to new_batch_path, class: "green-button" do
+        .h-6.w-6
+          = heroicon :"plus-sm"
+        New batch
 
   - c.body do
     .w-full

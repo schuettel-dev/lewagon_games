@@ -1,7 +1,8 @@
 class BatchesController < ApplicationController
-  before_action :set_batch, only: [:show, :edit, :update, :destroy]
+  before_action :set_and_authorize_batch, only: [:show, :edit, :update, :destroy]
 
   def index
+    authorize Batch
     @pagy, @batches = pagy(find_batches)
   end
 
@@ -37,8 +38,9 @@ class BatchesController < ApplicationController
 
   private
 
-  def set_batch
+  def set_and_authorize_batch
     @batch = policy_scope(Batch).find_by!(url_identifier: params[:id])
+    authorize @batch
   end
 
   def find_batches

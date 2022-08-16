@@ -1,4 +1,7 @@
 class MembershipsController < ApplicationController
+  def create
+  end
+
   def update
     @membership = policy_scope(BatchMembership).find(params[:id])
     @redirect_url = batch_membership_params[:redirect_url]

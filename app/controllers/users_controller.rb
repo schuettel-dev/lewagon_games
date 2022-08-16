@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :update]
+
   def index
     authorize User
     @pagy, @users = pagy(find_users)
   end
 
   def show
-    @user = users_scope.find_by!(github_id: params[:id])
     authorize @user
   end
 
   def new
+    authorize User
     @form = Users::Form.new(User.new, params)
   end
 
   def create
+    authorize User
     @form = Users::Form.new(User.new, params)
 
     if @form.save
@@ -25,6 +28,7 @@ class UsersController < ApplicationController
 
   def update
     @user = users_scope.find_by!(github_id: params[:id])
+
     if @user.update(update_user_params)
       redirect_to users_path
     else
@@ -33,6 +37,11 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = users_scope.find_by!(github_id: params[:id])
+    authorize @user
+  end
 
   def users_scope
     policy_scope(User)
