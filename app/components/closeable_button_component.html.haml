@@ -1,9 +1,0 @@
-%div{ "data-controller": "closeable", "data-closeable-after-appearance-of-value": closeable_after, class: "flex items-center" }
-  %div{ "data-closeable-target": "openingElement" }
-    = opening_element
-
-  %div.hidden{ "data-closeable-target": "closingElement" }
-    = button_tag class: "white-button", "data-action": "closeable#close" do
-      .h-4.w-4
-        = heroicon :x
-      Close
