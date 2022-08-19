@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
     t.index ["url_identifier"], name: "index_batches_on_url_identifier", unique: true
   end
 
+  create_table "game_instances", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.string "state", default: "started", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_game_instances_on_game_id"
+  end
+
+  create_table "game_my_songs_playlists", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.string "track_1"
+    t.string "track_2"
+    t.string "track_3"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_game_my_songs_playlists_on_player_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "klass", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["klass"], name: "index_games_on_klass", unique: true
+    t.index ["name"], name: "index_games_on_name", unique: true
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "batch_id", null: false
     t.bigint "user_id", null: false
@@ -33,6 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
     t.index ["batch_id", "user_id"], name: "index_memberships_on_batch_id_and_user_id", unique: true
     t.index ["batch_id"], name: "index_memberships_on_batch_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.bigint "game_instance_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_instance_id"], name: "index_players_on_game_instance_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +82,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
     t.index ["github_id"], name: "index_users_on_github_id", unique: true
   end
 
+  add_foreign_key "game_instances", "games"
+  add_foreign_key "game_my_songs_playlists", "players"
+  add_foreign_key "players", "game_instances"
+  add_foreign_key "players", "users"
 end

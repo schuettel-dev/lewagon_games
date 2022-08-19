@@ -1,14 +1,14 @@
-eighty_one:
+batch_81:
   name: "81"
   url_identifier: "81"
   location: "Tokyo"
 
-eighty_two:
+batch_82:
   name: "82"
   url_identifier: "82"
-  location: Sydney
+  location: "New York"
 
-eighty_three:
+batch_83:
   name: "83"
   url_identifier: "83"
-  location: Paris
+  location: "Athens"

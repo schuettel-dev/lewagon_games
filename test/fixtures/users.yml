@@ -1,6 +1,100 @@
-lxxxvi:
-  github_id: "1409672"
-  nickname: "lxxxvi"
+DEFAULTS: &DEFAULTS
+  image_url: "https://avatars.githubusercontent.com/u/77623418?v=4"
+  privilege: "user"
+
+mario:
+  <<: *DEFAULTS
+  github_id: "1409672" # lxxxvi
+  nickname: "mario"
   name: "Mario"
-  image_url: "https://avatars.githubusercontent.com/u/1409672?v=4"
   privilege: "superadmin"
+
+luigi:
+  <<: *DEFAULTS
+  github_id: "100002"
+  nickname: "luigi"
+  name: "Luigi"
+
+peach:
+  <<: *DEFAULTS
+  github_id: "100003"
+  nickname: "peach"
+  name: "Peach"
+
+toad:
+  <<: *DEFAULTS
+  github_id: "100004"
+  nickname: "toad"
+  name: "Toad"
+
+yoshi:
+  <<: *DEFAULTS
+  github_id: "100005"
+  nickname: "yoshi"
+  name: "Yoshi"
+
+doom:
+  <<: *DEFAULTS
+  github_id: "100006"
+  nickname: "mf-doom"
+  name: "MF Doom"
+
+qtip:
+  <<: *DEFAULTS
+  github_id: "100007"
+  nickname: "q-tip"
+  name: "Qtip"
+
+nas:
+  <<: *DEFAULTS
+  github_id: "100008"
+  nickname: "nas"
+  name: "Nas"
+
+ghostface:
+  <<: *DEFAULTS
+  github_id: "100009"
+  nickname: "ghostface"
+  name: "Ghostface Killah"
+
+rakim:
+  <<: *DEFAULTS
+  github_id: "100010"
+  nickname: "rakim"
+  name: "Rakim"
+
+guru:
+  <<: *DEFAULTS
+  github_id: "100011"
+  nickname: guru"
+  name: "Guru"
+
+jeru:
+  <<: *DEFAULTS
+  github_id: "100012"
+  nickname: "jeru"
+  name: "Jeru The Damaja"
+
+sokrates:
+  <<: *DEFAULTS
+  github_id: "100013"
+  nickname: "sokrates"
+  name: "Sokrates"
+
+diogenes:
+  <<: *DEFAULTS
+  github_id: "100014"
+  nickname: "diogenes"
+  name: "Diogenes"
+
+hippocrates:
+  <<: *DEFAULTS
+  github_id: "100015"
+  nickname: "hippokrates"
+  name: "Hippokrates"
+
+plato:
+  <<: *DEFAULTS
+  github_id: "100016"
+  nickname: "plato"
+  name: "Plato"

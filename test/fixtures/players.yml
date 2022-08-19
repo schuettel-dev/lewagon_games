@@ -1,0 +1,19 @@
+my_songs_batch_81_mario:
+  game_instance: my_songs_batch_81
+  user: mario
+
+my_songs_batch_81_luigi:
+  game_instance: my_songs_batch_81
+  user: luigi
+
+my_songs_batch_81_peach:
+  game_instance: my_songs_batch_81
+  user: peach
+
+my_songs_batch_81_toad:
+  game_instance: my_songs_batch_81
+  user: toad
+
+my_songs_batch_81_yoshi:
+  game_instance: my_songs_batch_81
+  user: yoshi
