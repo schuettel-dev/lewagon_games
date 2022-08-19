@@ -1,4 +1,6 @@
-= button_to membership_path(membership), method: :delete, form: { "data-turbo-confirm": "Are you sure?" }, class: "white-dangerous-button" do
-  .h-4.w-4
-    = heroicon :"minus-sm"
-  Remove
+= form_with url: membership_path(membership), method: :delete, html: { "data-turbo-confirm": "Are you sure?" } do |f|
+  = f.hidden_field :redirect_to_user, value: redirect_to_user?, disabled: !redirect_to_user?
+  = f.button type: :submit, class: "white-dangerous-button" do
+    .h-4.w-4
+      = heroicon :"minus-sm"
+    Remove

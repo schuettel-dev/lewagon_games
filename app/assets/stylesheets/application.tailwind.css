@@ -6,12 +6,16 @@
   @apply text-5xl font-bold inline-block leading-24;
 }
 
-.link {
+.fuchsia-link {
   @apply text-fuchsia-500 opacity-50 hover:opacity-100 transition;
 }
 
 .shy-link {
   @apply opacity-40 hover:opacity-80 transition;
+}
+
+.opacity-link {
+  @apply hover:opacity-50 transition;
 }
 
 .cool-text-gradient {

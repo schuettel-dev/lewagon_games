@@ -2,5 +2,5 @@
   .h-8.w-8
     = render Users::AvatarComponent.new(user)
   .inline-flex.items-baseline.gap-x-2.flex-wrap
-    %span= display_name
+    = link_to display_name, user, class: "opacity-link", "data-turbo-frame": "_top"
     .text-sm.opacity-60= display_nickname

@@ -22,7 +22,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        if @redirect_to.is_a?(User)
+        if @object.is_a?(User)
           render :update_user
         else
           render :update_batch
