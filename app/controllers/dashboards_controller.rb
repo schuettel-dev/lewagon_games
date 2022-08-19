@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
   def show
-    @count = session[:count].to_i
+    @game_instances = policy_scope(GameInstance)
   end
 end

@@ -2,4 +2,6 @@
   - c.heading("Dashboard", :play)
 
   - c.body do
-    HERE COMES THE BODY
+    %ul
+      - @game_instances.each do |game_instance|
+        %li= game_instance.inspect
