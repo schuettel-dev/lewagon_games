@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
   def show
-    @game_instances = policy_scope(GameInstance)
+    @games = policy_scope(Game)
   end
 end

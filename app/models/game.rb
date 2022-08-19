@@ -1,7 +1,11 @@
 class Game < ApplicationRecord
-  has_many :instances, class_name: "GameInstance"
+  belongs_to :game_type
+  has_many :players
+  has_many :users, through: :players
 
-  validates :name, :klass, presence: true
-  validates :name, uniqueness: true
-  validates :klass, uniqueness: true
+  scope :having_user_as_player, -> (user) { where(players: Player.where(user:)) }
+
+  enum state: {
+    started: "started"
+  }
 end
