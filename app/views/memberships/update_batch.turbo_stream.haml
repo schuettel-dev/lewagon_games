@@ -5,6 +5,3 @@
 - users_table_component = Batches::UsersTableComponent.new(batch: @object)
 = turbo_stream.replace(users_table_component.to_dom_id) do
   = render users_table_component
-
-= turbo_stream.replace(:batches__add_member_form) do
-  = render Batches::AddMemberButtonComponent.new(batch: @batch)

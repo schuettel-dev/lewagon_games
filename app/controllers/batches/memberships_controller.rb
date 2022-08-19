@@ -11,10 +11,7 @@ class Batches::MembershipsController < ApplicationController
     if @batch.memberships.find_or_create_by(user: @user)
       @batch.reload
       respond_to do |format|
-        format.turbo_stream do
-          @object = @batch
-          render "memberships/update_batch"
-        end
+        format.turbo_stream { render :update }
         format.html { redirect_to [:admin, @batch] }
       end
     else

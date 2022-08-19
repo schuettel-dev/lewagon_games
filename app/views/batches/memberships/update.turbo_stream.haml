@@ -1,0 +1,10 @@
+- info_component = Batches::InfoComponent.new(batch: @batch)
+= turbo_stream.replace(info_component.to_dom_id) do
+  = render info_component
+
+- users_table_component = Batches::UsersTableComponent.new(batch: @batch)
+= turbo_stream.replace(users_table_component.to_dom_id) do
+  = render users_table_component
+
+= turbo_stream.update(:batches__add_member_form) do
+  = render Batches::AddMemberButtonComponent.new(batch: @batch)
