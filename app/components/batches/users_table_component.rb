@@ -6,6 +6,6 @@ class Batches::UsersTableComponent < ApplicationComponent
   end
 
   def to_dom_id
-    "#{dom_id(batch)}__users_table_component"
+    dom_id(batch, :table)
   end
 end

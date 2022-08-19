@@ -1,4 +1,7 @@
-%data{ "data-controller": "appearable", "data-appearable-name-value": "batches-addUserForm" }
+.flex.flex-col.gap-y-1
+  .flex.justify-end.mx-10
+    = link_to "Close", batch_path(batch), class: "shy-link"
+
   .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
     .flex.flex-col.gap-y-8
       = render Forms::SearchFormComponent.new(url: url_for, label_text: "Search users")
@@ -7,10 +10,11 @@
         .flex.flex-col
           .label Search results
           - if found_users.any?
-            %ul.border.border-gray-200.rounded-lg.divide-y.divide-gray-200
+            .border.border-gray-200.rounded-lg.divide-y.divide-gray-200
               - found_users.each do |user|
-                %li.p-4.flex.items-center.justify-between
-                  = render Users::NameWithAvatarComponent.new(user:)
-                  = render Batches::MembershipComponent.new(batch:, user:)
+                = turbo_frame_tag "add_membership_#{dom_id(batch)}_#{dom_id(user)}" do
+                  .p-4.flex.items-center.justify-between
+                    = render Users::NameWithAvatarComponent.new(user:)
+                    = render Batches::AddMembershipComponent.new(batch:, user:)
           - else
             No search result

@@ -1,0 +1,6 @@
+= form_with(url: batch_memberships_path(membership.batch)) do |f|
+  = f.hidden_field :user_id, value: membership.user.id
+  = f.button type: :submit, class: "white-button", "data-turbo-frame": "_top" do
+    .h-4.w-4
+      = heroicon :plus
+    Add

@@ -3,6 +3,6 @@
     = form_with(model: membership, url: membership_path(membership)) do |f|
       .inline-flex
         = f.hidden_field :redirect_url, value: redirect_url
-        = f.select :role, BatchMembershipDecorator.roles_as_options, {}, class: "select", onchange: "this.form.requestSubmit()"
+        = f.select :role, MembershipDecorator.roles_as_options, {}, class: "select", onchange: "this.form.requestSubmit()"
   - else
     = membership.decorate.display_role

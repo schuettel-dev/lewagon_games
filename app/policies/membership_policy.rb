@@ -1,4 +1,4 @@
-class BatchMembershipPolicy < ApplicationPolicy
+class MembershipPolicy < ApplicationPolicy
   def update?
     maintain?
   end
@@ -11,8 +11,6 @@ class BatchMembershipPolicy < ApplicationPolicy
     not_batch_ownership? && (batch_owner? || any_admin?)
   end
 
-  private
-
   def batch_owner?
     record.batch.owner == user
   end
@@ -20,6 +18,8 @@ class BatchMembershipPolicy < ApplicationPolicy
   def not_batch_ownership?
     !record.role_owner?
   end
+
+  private
 
   class Scope < Scope
     def resolve

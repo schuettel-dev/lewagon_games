@@ -18,6 +18,10 @@ class Batches::SearchUsersComponent < ApplicationComponent
     @params[:search_query].presence
   end
 
+  def to_dom_id
+    :batches__search_users_component
+  end
+
   private
 
   def search_users

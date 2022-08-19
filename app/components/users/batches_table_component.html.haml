@@ -1,18 +1,15 @@
-= turbo_frame_tag to_dom_id do
-  = render TableComponent.new do |table|
-    - table.header do |header|
-      - header.column(class: "text-lg") { "Batch" }
-      - header.column(class: "text-lg") { "Location" }
-      - header.column(class: "text-lg") { "Role" }
-      - header.column
+= render TableComponent.new do |table|
+  - table.header do |header|
+    - header.column(class: "w-1/12 text-lg") { "Batch" }
+    - header.column(class: "w-5/12 text-lg") { "Location" }
+    - header.column(class: "w-auto text-lg") { "Role" }
 
-    - table.body do |body|
-      = user.memberships.batch_names_alphabetically.each do |membership|
-        - body.row do |row|
-          - row.column(class: "text-2xl") { membership.batch.decorate.display_name }
-          - row.column(class: "text-2xl") { membership.batch.decorate.display_location }
-          - row.column(class: "text-2xl") do
-            = render Memberships::RoleComponent.new(membership:, redirect_url: url_for)
 
-          - row.column(class: "flex justify-end") do
-            = render Users::MembershipComponent.new(user:, batch: membership.batch)
+  - table.body do |body|
+    = user.memberships.batch_names_alphabetically.each do |membership|
+      - body.row do |row|
+        - row.column(class: "text-2xl") do
+          = link_to membership.batch.decorate.display_name, membership.batch, class: "link"
+        - row.column(class: "text-2xl") { membership.batch.decorate.display_location }
+        - row.column(class: "text-2xl") do
+          = render Memberships::RoleComponent.new(membership:, redirect_url: url_for)

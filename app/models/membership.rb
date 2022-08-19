@@ -1,4 +1,4 @@
-class BatchMembership < ApplicationRecord
+class Membership < ApplicationRecord
   belongs_to :batch
   belongs_to :user
 
@@ -17,7 +17,7 @@ class BatchMembership < ApplicationRecord
   private
 
   def single_owner
-    return if BatchMembership.role_owner.without(self).find_by(batch:).nil?
+    return if Membership.role_owner.without(self).find_by(batch:).nil?
 
     errors.add(:role, :can_only_exist_once)
   end

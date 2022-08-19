@@ -32,7 +32,7 @@ namespace :fake do
   end
 
   desc "Fake batch memberships"
-  task batch_memberships: :environment do
+  task memberships: :environment do
     Batch.eager_load(:memberships).each do |batch|
       next if batch.memberships.any?
 

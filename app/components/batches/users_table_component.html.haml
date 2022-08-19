@@ -14,4 +14,4 @@
             = render Memberships::RoleComponent.new(membership:, redirect_url: url_for)
 
           - row.column(class: "flex justify-end") do
-            = render Batches::MembershipComponent.new(batch:, user: membership.user)
+            = render Memberships::RemoveComponent.new(membership:)

@@ -27,10 +27,6 @@ class UserPolicy < ApplicationPolicy
     record != user
   end
 
-  def add_to_batch?
-    any_admin?
-  end
-
   class Scope < Scope
     def resolve
       return scope if user.any_admin?

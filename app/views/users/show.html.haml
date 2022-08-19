@@ -10,17 +10,5 @@
         .flex.justify-between.items-center
           %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Batches
 
-          - if policy(@user).add_to_batch?
-            .flex
-              = render CloseableButtonComponent.new(closeable_after: "users-addToBatchForm") do |c|
-                - c.opening_element do
-                  = link_to new_user_membership_path(@user), class: "green-button", "data-turbo-frame": "users__add_to_batch_form_component" do
-                    .h-4.w-4
-                      = heroicon :"plus"
-                    Add to batch
-
-        .w-full
-          = turbo_frame_tag :users__add_to_batch_form_component
-
         .w-full
           = render Users::BatchesTableComponent.new(user: @user)

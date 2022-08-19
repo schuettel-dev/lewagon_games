@@ -6,6 +6,6 @@ class Memberships::Form < ApplicationForm
   end
 
   def self.model_name
-    ActiveModel::Name.new(self, nil, "BatchMembership")
+    ActiveModel::Name.new(self, nil, "Membership")
   end
 end

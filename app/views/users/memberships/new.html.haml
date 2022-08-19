@@ -1,7 +1,0 @@
-= render PageComponent.new do |c|
-  - c.heading("Add to batch", :user)
-
-  - c.body do
-    .w-full
-      = turbo_frame_tag :users__add_to_batch_form_component do
-        = render Users::SearchBatchesComponent.new(user: @user, search_query: params[:search_query])

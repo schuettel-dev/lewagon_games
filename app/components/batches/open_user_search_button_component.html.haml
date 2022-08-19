@@ -1,0 +1,8 @@
+= turbo_frame_tag to_dom_id do
+  .flex
+    = render CloseableButtonComponent.new(closeable_after: "batches-addUserForm") do |c|
+      - c.opening_element do
+        = link_to new_batch_membership_path(@batch), class: "green-button", "data-turbo-frame": "batches__search_users_component" do
+          .h-4.w-4
+            = heroicon :"plus"
+          Add member

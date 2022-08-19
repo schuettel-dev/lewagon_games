@@ -6,6 +6,7 @@ export default class extends Controller {
 
   connect() {
     document.addEventListener("appearable:appeared", (event) => this.showCloseable(event));
+    document.addEventListener("appearable:disappeared", (event) => this.hideCloseable(event));
     this.#render();
   }
 
@@ -16,9 +17,22 @@ export default class extends Controller {
     }
   }
 
+  hideCloseable(event) {
+    if(event.detail.name == this.afterAppearanceOfValue) {
+      this.isCloseableValue = false;
+      this.#render();
+    }
+  }
+
   close() {
     this.dispatch("disappear", { detail: { name: this.afterAppearanceOfValue }})
     this.isCloseableValue = false;
+    this.#render();
+  }
+
+  open() {
+    this.dispatch("appear", { detail: { name: this.afterAppearanceOfValue }})
+    this.isCloseableValue = true;
     this.#render();
   }
 

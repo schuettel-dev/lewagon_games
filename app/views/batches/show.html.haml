@@ -16,17 +16,8 @@
         .flex.justify-between.items-center
           %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Members
 
-          - if policy(@batch).add_membership?
-            .flex
-              = render CloseableButtonComponent.new(closeable_after: "batches-addUserForm") do |c|
-                - c.opening_element do
-                  = link_to new_batch_membership_path(@batch), class: "green-button", "data-turbo-frame": "batches__search_users_component" do
-                    .h-4.w-4
-                      = heroicon :"plus"
-                    Add member
+        - if policy(@batch).update?
+          = turbo_frame_tag :batches__add_member_form do
+            = render Batches::AddMemberButtonComponent.new(batch: @batch)
 
-        .w-full
-          = turbo_frame_tag :batches__search_users_component
-
-        .w-full
-          = render Batches::UsersTableComponent.new(batch: @batch)
+        = render Batches::UsersTableComponent.new(batch: @batch)

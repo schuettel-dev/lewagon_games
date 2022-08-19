@@ -14,17 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "batch_memberships", force: :cascade do |t|
-    t.bigint "batch_id", null: false
-    t.bigint "user_id", null: false
-    t.string "role", default: "student", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["batch_id", "user_id"], name: "index_batch_memberships_on_batch_id_and_user_id", unique: true
-    t.index ["batch_id"], name: "index_batch_memberships_on_batch_id"
-    t.index ["user_id"], name: "index_batch_memberships_on_user_id"
-  end
-
   create_table "batches", force: :cascade do |t|
     t.string "name", null: false
     t.string "url_identifier", null: false
@@ -33,6 +22,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_25_132825) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_batches_on_name", unique: true
     t.index ["url_identifier"], name: "index_batches_on_url_identifier", unique: true
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "batch_id", null: false
+    t.bigint "user_id", null: false
+    t.string "role", default: "student", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id", "user_id"], name: "index_memberships_on_batch_id_and_user_id", unique: true
+    t.index ["batch_id"], name: "index_memberships_on_batch_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
