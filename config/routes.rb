@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   end
 
   resources :memberships, only: [:update, :destroy]
+  resources :games, only: [:index, :show]  do
+    resource :my_songs, only: [], module: :games do
+      resource :playlist, only: [:show, :edit, :update], module: :my_songs
+    end
+  end
 
   root to: "dashboards#show"
 

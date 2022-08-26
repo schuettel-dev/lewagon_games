@@ -1,0 +1,5 @@
+= render PageComponent.new do |c|
+  - c.heading("Games", :puzzle)
+
+  - c.body do
+    = render @games

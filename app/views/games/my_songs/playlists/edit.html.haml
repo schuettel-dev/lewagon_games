@@ -1,0 +1,22 @@
+%h1 Edit your tracks
+
+= turbo_frame_tag dom_id(@playlist) do
+  .bg-white.rounded-lg.p-4.border
+    = form_with(model: @playlist, url: game_my_songs_playlist_path(@playlist.game)) do |f|
+      .flex.flex-col.gap-y-8
+        .flex.flex-col.gap-y-8
+          .flex.flex-col
+            = f.label :track_1, "Track 1", class: "label"
+            = f.text_field :track_1, class: "input"
+
+          .flex.flex-col
+            = f.label :track_2, "Track 2", class: "label"
+            = f.text_field :track_2, class: "input"
+
+          .flex.flex-col
+            = f.label :track_3, "Track 3", class: "label"
+            = f.text_field :track_3, class: "input"
+
+        .flex.items-center.gap-x-4
+          = f.submit "Update tracks", class: "green-button", "data-turbo-frame": "_top"
+          = link_to "Cancel", game_path(@playlist.game), class: "shy-link"

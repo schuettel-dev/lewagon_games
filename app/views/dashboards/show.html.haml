@@ -2,6 +2,12 @@
   - c.heading("Dashboard", :play)
 
   - c.body do
-    %ul
-      - @games.each do |game|
-        %li= game.inspect
+    - if @started_games.any?
+      .w-full.flex.flex-col.gap-y-4
+        %h2.cool-text-gradient.text-sm.uppercase Active games
+        = render @started_games
+
+    - unless @ended_games_count.zero?
+      = link_to games_path do
+        = heroicon :puzzle
+        Go to all games

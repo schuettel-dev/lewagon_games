@@ -1,0 +1,19 @@
+%h1 Your tracks
+
+= turbo_frame_tag dom_id(@playlist) do
+  .bg-white.rounded-lg.p-4.border
+    .w-full.flex.justify-end
+      = link_to "Close", game_path(@playlist.game), class: "shy-link"
+
+    .flex.flex-col.gap-y-8
+      .flex.flex-col
+        .label Track 1
+        = @playlist.decorate.spotify_iframe(:track_1)
+
+      .flex.flex-col
+        .label Track 2
+        = @playlist.decorate.spotify_iframe(:track_2)
+
+      .flex.flex-col
+        .label Track 3
+        = @playlist.decorate.spotify_iframe(:track_3)

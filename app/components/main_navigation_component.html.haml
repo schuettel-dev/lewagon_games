@@ -4,6 +4,11 @@
       = heroicon :play
       Dashboard
 
+    - if policy(Game).index?
+      = link_to games_path do
+        = heroicon :puzzle
+        Games
+
     - if policy(Batch).index?
       = link_to batches_path do
         = heroicon :hashtag

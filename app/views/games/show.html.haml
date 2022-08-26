@@ -1,0 +1,22 @@
+= render PageComponent.new do |c|
+  - c.heading(@game.game_type.name, :puzzle)
+
+  - c.body do
+    .flex.flex-col.gap-y-8.w-full
+      .flex.flex-col.gap-y-4.w-full
+        %h2.uppercase.cool-text-gradient Players
+        .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
+          - @game.players.ordered.each do |player|
+            .p-4
+              = render Users::NameWithAvatarComponent.new(user: player.user)
+
+      .flex.flex-col.gap-y-4.w-full
+        %h2.uppercase.cool-text-gradient My playlist
+        = turbo_frame_tag @playlist do
+          .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
+            .p-4
+              .flex.items-center.gap-x-4
+                - if @playlist.any_valid_links?
+                  = link_to "Show my playlist", game_my_songs_playlist_path(@playlist.game), class: "green-button"
+
+                = link_to "Edit my playlist", edit_game_my_songs_playlist_path(@playlist.game), class: "white-button"
