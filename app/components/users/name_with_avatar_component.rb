@@ -1,4 +1,4 @@
-class Users::NameWithAvatarComponent < ViewComponent::Base
+class Users::NameWithAvatarComponent < ApplicationComponent
   attr_reader :user
 
   delegate :display_name, to: :user

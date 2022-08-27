@@ -2,11 +2,11 @@ class Player < ApplicationRecord
   belongs_to :game
   belongs_to :user
 
-  has_one :my_songs_playlist, class_name: "Game::MySongsPlaylist"
+  has_one :beatles_playlist, class_name: "Game::BeatlesPlaylist"
 
   scope :ordered, -> { joins(:user).order("users.nickname ASC") }
 
-  def my_songs_playlist!
-    my_songs_playlist || create_my_songs_playlist!
+  def beatles_playlist!
+    beatles_playlist || create_beatles_playlist!
   end
 end

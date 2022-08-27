@@ -51,23 +51,35 @@
 }
 
 .green-button {
-  @apply py-2 pl-7 pr-8 bg-green-600 text-white rounded-lg flex items-center gap-x-2 hover:bg-green-500 transition;
+  @apply py-2 pl-7 pr-8 bg-green-600 text-white cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-green-500 transition;
 }
 
 .gray-button {
-  @apply py-2 pl-7 pr-8 bg-gray-600 text-white rounded-lg flex items-center gap-x-2 hover:bg-gray-500 transition;
+  @apply py-2 pl-7 pr-8 bg-gray-600 text-white cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-gray-500 transition;
+}
+
+.small-green-button {
+  @apply py-1 pl-3 pr-4 bg-green-600 text-white cursor-pointer rounded flex items-center gap-x-2 hover:bg-green-500 transition text-xs;
 }
 
 .white-button {
-  @apply py-2 pl-7 pr-8 bg-white text-gray-800 rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+  @apply py-2 pl-7 pr-8 bg-white text-gray-800 cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+}
+
+.small-white-button {
+  @apply py-1 pl-3 pr-4 bg-white text-gray-800 cursor-pointer rounded flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300 text-xs;
 }
 
 .white-dangerous-button {
-  @apply py-2 pl-7 pr-8 bg-white text-gray-800 rounded-lg flex items-center gap-x-2 hover:bg-red-500 hover:text-white transition ring-1 ring-gray-300;
+  @apply py-2 pl-7 pr-8 bg-white text-gray-800 cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-red-500 hover:text-white transition ring-1 ring-gray-300;
+}
+
+.small-white-dangerous-button {
+  @apply py-1 pl-3 pr-4 bg-white text-gray-800 cursor-pointer rounded flex items-center gap-x-2 hover:bg-red-500 hover:text-white transition ring-1 ring-gray-300 text-xs;
 }
 
 .fuchsia-button {
-  @apply py-2 pl-7 pr-8 bg-fuchsia-600 text-white rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+  @apply py-2 pl-7 pr-8 bg-fuchsia-600 text-white cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
 }
 
 .fuchsia-button[disabled] {

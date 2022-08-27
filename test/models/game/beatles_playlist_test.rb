@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Game::MySongsPlaylistTest < ActiveSupport::TestCase
+class Game::BeatlesPlaylistTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

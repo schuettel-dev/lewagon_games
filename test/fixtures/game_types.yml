@@ -1,3 +1,3 @@
-my_songs:
-  name: "My songs"
-  klass: "MySongsGame"
+beatles:
+  name: "Beatles"
+  klass: "BeatlesGame"

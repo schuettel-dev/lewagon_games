@@ -1,5 +1,7 @@
 class Game < ApplicationRecord
   belongs_to :game_type
+  belongs_to :user
+
   has_many :players
   has_many :users, through: :players
 
@@ -7,11 +9,13 @@ class Game < ApplicationRecord
   scope :ordered, -> { in_order_of(:state, states.keys) }
 
   enum state: {
+    initialized: "initialized",
+    in_preparation: "in_preparation",
     started: "started",
     ended: "ended"
   }
 
-  def my_songs_playlist_for_user(user)
-    players.find_by(user:).my_songs_playlist!
+  def beatles_playlist_for_user(user)
+    players.find_by(user:).beatles_playlist!
   end
 end

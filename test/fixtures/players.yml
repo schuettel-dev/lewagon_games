@@ -1,19 +1,19 @@
-my_songs_batch_81_mario:
-  game: my_songs_batch_81
+beatles_batch_81_mario:
+  game: beatles_batch_81
   user: mario
 
-my_songs_batch_81_luigi:
-  game: my_songs_batch_81
+beatles_batch_81_luigi:
+  game: beatles_batch_81
   user: luigi
 
-my_songs_batch_81_peach:
-  game: my_songs_batch_81
+beatles_batch_81_peach:
+  game: beatles_batch_81
   user: peach
 
-my_songs_batch_81_toad:
-  game: my_songs_batch_81
+beatles_batch_81_toad:
+  game: beatles_batch_81
   user: toad
 
-my_songs_batch_81_yoshi:
-  game: my_songs_batch_81
+beatles_batch_81_yoshi:
+  game: beatles_batch_81
   user: yoshi

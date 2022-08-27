@@ -24,14 +24,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
     t.index ["url_identifier"], name: "index_batches_on_url_identifier", unique: true
   end
 
-  create_table "game_my_songs_playlists", force: :cascade do |t|
+  create_table "game_beatles_playlists", force: :cascade do |t|
     t.bigint "player_id", null: false
-    t.string "track_1"
-    t.string "track_2"
-    t.string "track_3"
+    t.string "track_1_url"
+    t.string "track_2_url"
+    t.string "track_3_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["player_id"], name: "index_game_my_songs_playlists_on_player_id"
+    t.index ["player_id"], name: "index_game_beatles_playlists_on_player_id"
   end
 
   create_table "game_types", force: :cascade do |t|
@@ -45,10 +45,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
 
   create_table "games", force: :cascade do |t|
     t.bigint "game_type_id", null: false
-    t.string "state", default: "started", null: false
+    t.bigint "user_id", null: false
+    t.string "state", default: "initialized", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["game_type_id"], name: "index_games_on_game_type_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -82,8 +84,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
     t.index ["github_id"], name: "index_users_on_github_id", unique: true
   end
 
-  add_foreign_key "game_my_songs_playlists", "players"
+  add_foreign_key "game_beatles_playlists", "players"
   add_foreign_key "games", "game_types"
+  add_foreign_key "games", "users"
   add_foreign_key "players", "games"
   add_foreign_key "players", "users"
 end

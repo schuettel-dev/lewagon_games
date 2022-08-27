@@ -1,3 +1,4 @@
-my_songs_batch_81:
-  game_type: my_songs
-  state: "started"
+beatles_batch_81:
+  game_type: beatles
+  state: "initialized"
+  user: mario

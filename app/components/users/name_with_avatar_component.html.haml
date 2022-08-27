@@ -4,3 +4,6 @@
   .inline-flex.items-baseline.gap-x-2.flex-wrap
     = link_to display_name, user, class: "opacity-link", "data-turbo-frame": "_top"
     .text-sm.opacity-60= display_nickname
+    - if user == current_user
+      %span.bg-fuchsia-600.rounded-lg.px-2.text-white.text-xs
+        You
