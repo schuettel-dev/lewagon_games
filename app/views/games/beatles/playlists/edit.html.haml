@@ -2,7 +2,7 @@
 
 = turbo_frame_tag dom_id(@playlist) do
   .bg-white.rounded-lg.p-4.border
-    = form_with(model: @playlist, url: game_beatles_playlist_path(@playlist.game)) do |f|
+    = form_with(model: @playlist, url: game_beatle_playlist_path(@playlist.game)) do |f|
       .flex.flex-col.gap-y-8
         .flex.flex-col.gap-y-8
           .flex.flex-col
@@ -19,4 +19,4 @@
 
         .flex.items-center.gap-x-4
           = f.submit "Update tracks", class: "green-button", "data-turbo-frame": "_top"
-          = link_to "Cancel", game_path(@playlist.game), class: "shy-link"
+          = link_to "Cancel", game_beatle_path(@playlist.game), class: "shy-link"

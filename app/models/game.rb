@@ -15,7 +15,7 @@ class Game < ApplicationRecord
     ended: "ended"
   }
 
-  def beatles_playlist_for_user(user)
-    players.find_by(user:).beatles_playlist!
+  def beatle_playlist_for_user(user)
+    players.find_by(user:).beatle_playlist!
   end
 end

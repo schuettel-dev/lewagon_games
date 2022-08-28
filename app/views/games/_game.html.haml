@@ -1,6 +1,9 @@
 .w-full.bg-white.border.border-gray-200.p-8.rounded-lg
   .flex.justify-between.items-center
-    .text-3xl.cool-text-gradient
-      = game.game_type.name
+    .flex.items-baseline.gap-x-4
+      .text-3xl.cool-text-gradient
+        = game.game_type.name
+      .text-gray-500
+        = I18n.t("game.shared.players_with_count", count: game.decorate.display_players_count)
 
     = link_to "Go to game", game, class: "green-button"

@@ -1,19 +1,19 @@
-beatles_batch_81_mario:
-  game: beatles_batch_81
+beatle_batch_81_mario:
+  game: beatle_batch_81
   user: mario
 
-beatles_batch_81_luigi:
-  game: beatles_batch_81
+beatle_batch_81_luigi:
+  game: beatle_batch_81
   user: luigi
 
-beatles_batch_81_peach:
-  game: beatles_batch_81
+beatle_batch_81_peach:
+  game: beatle_batch_81
   user: peach
 
-beatles_batch_81_toad:
-  game: beatles_batch_81
+beatle_batch_81_toad:
+  game: beatle_batch_81
   user: toad
 
-beatles_batch_81_yoshi:
-  game: beatles_batch_81
+beatle_batch_81_yoshi:
+  game: beatle_batch_81
   user: yoshi

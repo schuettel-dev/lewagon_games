@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :memberships, only: [:update, :destroy]
-  resources :games, only: [:index, :show, :update]  do
-    resource :beatles, only: [], module: :games do
+  resources :games, only: [:index]  do
+    resource :beatle, only: [:show, :update], module: :games do
       resource :playlist, only: [:show, :edit, :update], module: :beatles
     end
   end

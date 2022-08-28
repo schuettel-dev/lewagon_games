@@ -1,4 +1,5 @@
-beatles_batch_81:
-  game_type: beatles
+beatle_batch_81:
+  game_type: beatle
+  type: "Game::Beatle"
   state: "initialized"
   user: mario

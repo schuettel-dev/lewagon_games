@@ -1,4 +1,4 @@
-class Game::BeatlesPlaylistDecorator < ApplicationDecorator
+class Game::BeatlePlaylistDecorator < ApplicationDecorator
   include ActionView::Helpers::TagHelper
 
   def spotify_iframe(track)

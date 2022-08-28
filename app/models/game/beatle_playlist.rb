@@ -1,4 +1,4 @@
-class Game::BeatlesPlaylist < ApplicationRecord
+class Game::BeatlePlaylist < ApplicationRecord
   TRACK_COLUMNS = [:track_1_url, :track_2_url, :track_3_url].freeze
 
   delegate :game, to: :player

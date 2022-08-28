@@ -4,6 +4,6 @@
   User.find_by(nickname: github_nickname).privilege_superadmin!
 end
 
-GameType.find_or_create_by(klass: "Game::Beatles") do |game|
-  game.name = "My Songs"
+GameType.find_or_create_by(instance_type: "Game::Beatle") do |game|
+  game.name = "Beatle"
 end

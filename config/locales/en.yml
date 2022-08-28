@@ -1,5 +1,9 @@
 en:
   game:
+    shared:
+      players_with_count:
+        one: "1 player"
+        other: "%{count} players"
     beatles:
       missing_tracks:
         one: "1 track missing"

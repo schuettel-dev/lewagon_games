@@ -2,4 +2,4 @@
   - c.heading("Games", :puzzle)
 
   - c.body do
-    = render @games
+    = render partial: "games/game", collection: @games

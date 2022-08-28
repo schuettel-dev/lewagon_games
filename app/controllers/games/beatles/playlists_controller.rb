@@ -5,7 +5,7 @@ class Games::Beatles::PlaylistsController < ApplicationController
     authorize @playlist
 
     @game = @playlist.game
-    if @playlist.update(game_beatles_playlist_params)
+    if @playlist.update(game_beatle_playlist_params)
       redirect_to @game
     else
       render "game/show"
@@ -16,10 +16,10 @@ class Games::Beatles::PlaylistsController < ApplicationController
 
   def set_playlist
     game = Game.find_by!(id: params[:game_id])
-    @playlist = game.beatles_playlist_for_user(current_user)
+    @playlist = game.beatle_playlist_for_user(current_user)
   end
 
-  def game_beatles_playlist_params
-    params.require(:game_beatles_playlist).permit(:track_1_url, :track_2_url, :track_3_url)
+  def game_beatle_playlist_params
+    params.require(:game_beatle_playlist).permit(:track_1_url, :track_2_url, :track_3_url)
   end
 end
