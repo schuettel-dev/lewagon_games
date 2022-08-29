@@ -3,6 +3,14 @@ class GamePolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    create?
+  end
+
+  def create?
+    user.any_admin?
+  end
+
   def show?
     record.users.include?(user)
   end

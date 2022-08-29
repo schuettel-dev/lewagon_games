@@ -1,5 +1,12 @@
 = render PageComponent.new do |c|
   - c.heading("Games", :puzzle)
+  - c.actions do
+    - if policy(Game).create?
+      = link_to new_game_path, class: "py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-xl flex items-center gap-x-1 hover:bg-green-500 transition" do
+        .h-6.w-6
+          = heroicon :"plus-sm"
+        New game
 
   - c.body do
-    = render partial: "games/game", collection: @games
+    .w-full.flex.flex-col.gap-y-4
+      = render partial: "games/game", collection: @games

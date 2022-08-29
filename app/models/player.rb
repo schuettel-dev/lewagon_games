@@ -6,7 +6,7 @@ class Player < ApplicationRecord
 
   scope :ordered, -> { joins(:user).order("users.nickname ASC") }
 
-  def beatle_playlist!
-    beatle_playlist || create_beatle_playlist!
-  end
+  # def beatle_playlist
+  #   beatle_playlist || build_beatle_playlist
+  # end
 end
