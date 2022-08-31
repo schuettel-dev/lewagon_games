@@ -1,6 +1,7 @@
 class Batch < ApplicationRecord
   has_many :memberships
   has_many :users, through: :memberships
+  has_many :games
 
   has_one :owner_membership, -> { role_owner }, class_name: "Membership"
   has_one :owner, through: :owner_membership, source: :user

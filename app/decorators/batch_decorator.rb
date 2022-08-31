@@ -3,6 +3,10 @@ class BatchDecorator < ApplicationDecorator
     "Batch #{display_name}"
   end
 
+  def display_name_and_location
+    "#{display_name} (#{location})"
+  end
+
   def display_name
     name
   end
@@ -16,6 +20,6 @@ class BatchDecorator < ApplicationDecorator
   end
 
   def to_label
-    "#{display_name} (#{location})"
+    display_name_and_location
   end
 end

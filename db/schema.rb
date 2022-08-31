@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_114200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_batches_on_name", unique: true
     t.index ["url_identifier"], name: "index_batches_on_url_identifier", unique: true
+  end
+
+  create_table "game_beatle_playlist_guesses", force: :cascade do |t|
+    t.bigint "guessing_player_id", null: false
+    t.bigint "guessed_game_beatle_playlist_id", null: false
+    t.bigint "guessed_player_id"
+    t.integer "sort_position", null: false
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guessed_game_beatle_playlist_id"], name: "indx_guess_to_playlist"
+    t.index ["guessed_player_id"], name: "index_game_beatle_playlist_guesses_on_guessed_player_id"
+    t.index ["guessing_player_id"], name: "index_game_beatle_playlist_guesses_on_guessing_player_id"
   end
 
   create_table "game_beatle_playlists", force: :cascade do |t|
@@ -46,11 +59,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
 
   create_table "games", force: :cascade do |t|
     t.bigint "game_type_id", null: false
+    t.bigint "batch_id", null: false
     t.bigint "user_id", null: false
     t.string "state", default: "initialized", null: false
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_games_on_batch_id"
     t.index ["game_type_id"], name: "index_games_on_game_type_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
@@ -86,7 +101,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_19_123713) do
     t.index ["github_id"], name: "index_users_on_github_id", unique: true
   end
 
+  add_foreign_key "game_beatle_playlist_guesses", "game_beatle_playlists", column: "guessed_game_beatle_playlist_id"
+  add_foreign_key "game_beatle_playlist_guesses", "players", column: "guessed_player_id"
+  add_foreign_key "game_beatle_playlist_guesses", "players", column: "guessing_player_id"
   add_foreign_key "game_beatle_playlists", "players"
+  add_foreign_key "games", "batches"
   add_foreign_key "games", "game_types"
   add_foreign_key "games", "users"
   add_foreign_key "players", "games"

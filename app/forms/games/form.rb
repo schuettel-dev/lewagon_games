@@ -27,11 +27,30 @@ class Games::Form < ApplicationForm
   def save
     return unless valid?
 
-    @object = game_type.new_game(user: @current_user)
-    @object.users << batch.users
-    @object.players.map(&:build_beatle_playlist)
+    Game.transaction do
+      @object = game_type.new_game(user: @current_user)
+      @object.batch = batch
+      @object.users << batch.users
+      @object.save
 
-    super
+      beatle_playlists = @object.players.map(&:create_beatle_playlist)
+
+      @object.players.each do |player|
+        sort_positions = (1..@object.players.size).to_a.shuffle
+        beatle_playlists.excluding(player.beatle_playlist).each do |beatle_playlist|
+          # player.beatle_playlist_guesses << Game::BeatlePlaylistGuess.new(
+          #   guessing_player: player,
+          #   guessed_game_beatle_playlist: beatle_playlist,
+          #   sort_position: sort_positions.shift
+          # )
+          player.beatle_playlist_guesses.create(
+            # guessing_player: player,
+            guessed_game_beatle_playlist: beatle_playlist,
+            sort_position: sort_positions.shift
+          )
+        end
+      end
+    end
   end
 
   private
