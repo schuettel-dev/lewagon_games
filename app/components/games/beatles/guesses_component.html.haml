@@ -1,0 +1,8 @@
+= turbo_frame_tag dom_id(@game, :guesses) do
+  .flex.flex-col.gap-y-8
+    .w-full
+      = render Games::Beatles::PlaylistGuessesProgressBarComponent.new(current_player:)
+
+    .grid.grid-cols-2.gap-x-8
+      = render Games::Beatles::PlaylistComponent.new(playlist: current_guess.guessing_game_beatle_playlist)
+      = render Games::Beatles::PlaylistGuessFormComponent.new(current_player:, current_guess:)

@@ -26,14 +26,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_114200) do
 
   create_table "game_beatle_playlist_guesses", force: :cascade do |t|
     t.bigint "guessing_player_id", null: false
-    t.bigint "guessed_game_beatle_playlist_id", null: false
+    t.bigint "guessing_game_beatle_playlist_id", null: false
     t.bigint "guessed_player_id"
-    t.integer "sort_position", null: false
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["guessed_game_beatle_playlist_id"], name: "indx_guess_to_playlist"
     t.index ["guessed_player_id"], name: "index_game_beatle_playlist_guesses_on_guessed_player_id"
+    t.index ["guessing_game_beatle_playlist_id"], name: "indx_guess_to_playlist"
     t.index ["guessing_player_id"], name: "index_game_beatle_playlist_guesses_on_guessing_player_id"
   end
 
@@ -101,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_114200) do
     t.index ["github_id"], name: "index_users_on_github_id", unique: true
   end
 
-  add_foreign_key "game_beatle_playlist_guesses", "game_beatle_playlists", column: "guessed_game_beatle_playlist_id"
+  add_foreign_key "game_beatle_playlist_guesses", "game_beatle_playlists", column: "guessing_game_beatle_playlist_id"
   add_foreign_key "game_beatle_playlist_guesses", "players", column: "guessed_player_id"
   add_foreign_key "game_beatle_playlist_guesses", "players", column: "guessing_player_id"
   add_foreign_key "game_beatle_playlists", "players"

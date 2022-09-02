@@ -19,4 +19,16 @@ class Game < ApplicationRecord
   def beatle_playlist_for_user(user)
     players.find_by(user:).beatle_playlist
   end
+
+  def progress!
+    return if next_state.nil?
+
+    update(state: next_state)
+  end
+
+  def next_state
+    game_states_keys = Game.states.keys
+    next_states_index = game_states_keys.index(state).next
+    game_states_keys[next_states_index]
+  end
 end

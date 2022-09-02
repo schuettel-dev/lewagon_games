@@ -15,7 +15,7 @@ class GamePolicy < ApplicationPolicy
     record.users.include?(user)
   end
 
-  def update?
+  def progress?
     admin?
   end
 

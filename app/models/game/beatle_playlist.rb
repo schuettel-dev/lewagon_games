@@ -4,6 +4,10 @@ class Game::BeatlePlaylist < ApplicationRecord
   delegate :game, to: :player
   belongs_to :player
 
+  scope :for_game, -> (game) { where(player: Player.for_game(game)) }
+  scope :for_user, -> (user) { where(player: Player.for_user(user)) }
+  # scope :for_game_and_user, -> (game:, user:) { for_game(game).for_user(user) }
+
   def spotify_embed_url(attribute)
     song_link = attributes[attribute.to_s]
     spotify_song_id = String(song_link).split("spotify.com/track/")&.dig(1)&.split("?")&.dig(0)

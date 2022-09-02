@@ -1,0 +1,5 @@
+= turbo_stream.replace dom_id(@current_player, :progress_bar) do
+  = render Games::Beatles::PlaylistGuessesProgressBarComponent.new(current_player: @current_player)
+
+= turbo_stream.replace dom_id(@current_player, :playlist_guess_form) do
+  = render Games::Beatles::PlaylistGuessFormComponent.new(current_player: @current_player, current_guess: @current_guess.reload)

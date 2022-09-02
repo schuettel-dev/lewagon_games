@@ -5,5 +5,8 @@ class Player < ApplicationRecord
   has_one :beatle_playlist, class_name: "Game::BeatlePlaylist"
   has_many :beatle_playlist_guesses, foreign_key: :guessing_player_id, class_name: "Game::BeatlePlaylistGuess"
 
+  scope :for_game, -> (game) { where(game:) }
+  scope :for_user, -> (user) { where(user:) }
+  # scope :for_game_and_user, -> (game:, user:) { for_game(game).for_user(user) }
   scope :ordered, -> { joins(:user).order("users.nickname ASC") }
 end

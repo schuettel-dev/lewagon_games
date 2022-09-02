@@ -1,0 +1,113 @@
+# Mario
+
+beatle_batch_81_mario_guessing_beatle_batch_81_luigi_playlist:
+  guessing_player: beatle_batch_81_mario
+  guessing_game_beatle_playlist: beatle_batch_81_luigi_playlist
+  guessed_player:
+
+beatle_batch_81_mario_guessing_beatle_batch_81_peach_playlist:
+  guessing_player: beatle_batch_81_mario
+  guessing_game_beatle_playlist: beatle_batch_81_peach_playlist
+  guessed_player:
+
+beatle_batch_81_mario_guessing_beatle_batch_81_toad_playlist:
+  guessing_player: beatle_batch_81_mario
+  guessing_game_beatle_playlist: beatle_batch_81_toad_playlist
+  guessed_player:
+
+beatle_batch_81_mario_guessing_beatle_batch_81_yoshi_playlist:
+  guessing_player: beatle_batch_81_mario
+  guessing_game_beatle_playlist: beatle_batch_81_yoshi_playlist
+  guessed_player:
+
+
+# Luigi
+
+beatle_batch_81_luigi_guessing_beatle_batch_81_mario_playlist:
+  guessing_player: beatle_batch_81_luigi
+  guessing_game_beatle_playlist: beatle_batch_81_mario_playlist
+  guessed_player:
+
+beatle_batch_81_luigi_guessing_beatle_batch_81_peach_playlist:
+  guessing_player: beatle_batch_81_luigi
+  guessing_game_beatle_playlist: beatle_batch_81_peach_playlist
+  guessed_player:
+
+beatle_batch_81_luigi_guessing_beatle_batch_81_toad_playlist:
+  guessing_player: beatle_batch_81_luigi
+  guessing_game_beatle_playlist: beatle_batch_81_toad_playlist
+  guessed_player:
+
+beatle_batch_81_luigi_guessing_beatle_batch_81_yoshi_playlist:
+  guessing_player: beatle_batch_81_luigi
+  guessing_game_beatle_playlist: beatle_batch_81_yoshi_playlist
+  guessed_player:
+
+
+# Peach
+
+beatle_batch_81_peach_guessing_beatle_batch_81_mario_playlist:
+  guessing_player: beatle_batch_81_peach
+  guessing_game_beatle_playlist: beatle_batch_81_mario_playlist
+  guessed_player:
+
+beatle_batch_81_peach_guessing_beatle_batch_81_luigi_playlist:
+  guessing_player: beatle_batch_81_peach
+  guessing_game_beatle_playlist: beatle_batch_81_luigi_playlist
+  guessed_player:
+
+beatle_batch_81_peach_guessing_beatle_batch_81_toad_playlist:
+  guessing_player: beatle_batch_81_peach
+  guessing_game_beatle_playlist: beatle_batch_81_toad_playlist
+  guessed_player:
+
+beatle_batch_81_peach_guessing_beatle_batch_81_yoshi_playlist:
+  guessing_player: beatle_batch_81_peach
+  guessing_game_beatle_playlist: beatle_batch_81_yoshi_playlist
+  guessed_player:
+
+
+# Toad
+
+beatle_batch_81_toad_guessing_beatle_batch_81_mario_playlist:
+  guessing_player: beatle_batch_81_toad
+  guessing_game_beatle_playlist: beatle_batch_81_mario_playlist
+  guessed_player:
+
+beatle_batch_81_toad_guessing_beatle_batch_81_luigi_playlist:
+  guessing_player: beatle_batch_81_toad
+  guessing_game_beatle_playlist: beatle_batch_81_luigi_playlist
+  guessed_player:
+
+beatle_batch_81_toad_guessing_beatle_batch_81_peach_playlist:
+  guessing_player: beatle_batch_81_toad
+  guessing_game_beatle_playlist: beatle_batch_81_peach_playlist
+  guessed_player:
+
+beatle_batch_81_toad_guessing_beatle_batch_81_yoshi_playlist:
+  guessing_player: beatle_batch_81_toad
+  guessing_game_beatle_playlist: beatle_batch_81_yoshi_playlist
+  guessed_player:
+
+
+# Yoshi
+
+beatle_batch_81_yoshi_guessing_beatle_batch_81_mario_playlist:
+  guessing_player: beatle_batch_81_yoshi
+  guessing_game_beatle_playlist: beatle_batch_81_mario_playlist
+  guessed_player:
+
+beatle_batch_81_yoshi_guessing_beatle_batch_81_luigi_playlist:
+  guessing_player: beatle_batch_81_yoshi
+  guessing_game_beatle_playlist: beatle_batch_81_luigi_playlist
+  guessed_player:
+
+beatle_batch_81_yoshi_guessing_beatle_batch_81_peach_playlist:
+  guessing_player: beatle_batch_81_yoshi
+  guessing_game_beatle_playlist: beatle_batch_81_peach_playlist
+  guessed_player:
+
+beatle_batch_81_yoshi_guessing_beatle_batch_81_toad_playlist:
+  guessing_player: beatle_batch_81_yoshi
+  guessing_game_beatle_playlist: beatle_batch_81_toad_playlist
+  guessed_player:

@@ -1,8 +1,25 @@
 = render PageComponent.new do |c|
   - c.heading(@game.game_type.name, :puzzle)
 
+  - c.actions do
+    - if policy(@game).admin?
+      - unless @game.next_state.nil?
+        .flex.flex-col.gap-y-1
+          .flex.justify-end
+            = button_to @game.decorate.display_button_text_to_move_to_next_state, progress_game_beatle_path(@game), method: :put, class: @game.decorate.class_name_for_button_to_move_to_next_state, form: { "data-turbo-confirm": "Are you sure? You cannot undo this." }
+          .text-gray-500.text-xs
+            = @game.decorate.display_state_info_for_admin
+
   - c.body do
     .flex.flex-col.gap-y-8.w-full
+
+      / GUESSES
+      - if @game.started?
+        .flex.flex-col.gap-y-4.w-full
+          %h2.uppercase.cool-text-gradient Guesses
+          .border.rounded-lg.px-4.py-6.bg-white
+            = render Games::Beatles::GuessesComponent.new(game: @game, params:)
+
       / GENERAL
       .flex.flex-col.gap-y-4.w-full
         %h2.uppercase.cool-text-gradient General
@@ -26,48 +43,19 @@
               - c.term { "Players" }
               - c.with_description.with_content(@game.decorate.display_players_count)
 
-      / ADMIN
-      - if policy(@game).admin?
+      / MY PLAYLIST
+      - if policy(@game).show_own_playlist?
         .flex.flex-col.gap-y-4.w-full
-          %h2.uppercase.cool-text-gradient Admin
-          .grid.grid-cols-1.border.rounded-lg.px-4.py-6.bg-white
-            .flex
-              - if @game.initialized?
-                .flex.flex-col.gap-y-2
-                  .flex.items-center.gap-x-2
-                    = form_with(model: @game, url: game_beatle_path(@game)) do |f|
-                      = f.hidden_field :state, value: Game.states[:in_preparation]
-                      = f.submit "Make public", class: "small-white-button"
+          %h2.uppercase.cool-text-gradient My playlist
+          - playlist = @game.beatle_playlist_for_user(current_user)
+          = turbo_frame_tag playlist do
+            .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
+              .p-4
+                .flex.items-center.gap-x-4.w-full
+                  = link_to "Show my playlist", game_beatle_playlist_path(playlist.game), class: "green-button justify-center w-full"
 
-                  .text-xs.text-gray-500
-                    In this state only you can access the game. Make it public to to open it for the players.
-
-              - if @game.in_preparation?
-                .flex.flex-col.gap-y-2
-                  .flex.items-center.gap-x-2
-                    .flex
-                      = form_with(model: @game) do |f|
-                        = f.hidden_field :state, value: Game.states[:started]
-                        = f.submit "Start game", class: "small-green-button", onclick: "confirm('Are you sure you want to start the game? This cannot be undone.')"
-
-                  .text-xs.text-gray-500
-                    In this state players can modify their tracks. Start the game to let players guess each others playlists. You can NOT return to this state again.
-
-              - if @game.started?
-                .flex.flex-col.gap-y-2
-                  .flex.items-center.gap-x-2
-                    .flex
-                      = @game.decorate.display_state
-                    .flex
-                      = form_with(model: @game, html: { "data-turbo-confirm": "Are you sure you want to end the game? This cannot be undone." }) do |f|
-                        = f.hidden_field :state, value: Game.states[:ended]
-                        = f.submit "End game", class: "small-white-dangerous-button"
-
-              - if @game.ended?
-                .flex.flex-col.gap-y-2
-                  .flex.items-center.gap-x-2
-                    .flex
-                      = @game.decorate.display_state
+                  - if policy(playlist).update?
+                    = link_to "Edit my playlist", edit_game_beatle_playlist_path(playlist.game), class: "white-button justify-center w-full"
 
       / PLAYERS
       .flex.flex-col.gap-y-4.w-full
@@ -79,17 +67,3 @@
                 = render Users::NameWithAvatarComponent.new(user: player.user)
               .flex
                 = player.beatle_playlist.decorate.display_state
-
-      / MY PLAYLIST
-      - if policy(@game).show_own_playlist?
-        .flex.flex-col.gap-y-4.w-full
-          %h2.uppercase.cool-text-gradient My playlist
-          = turbo_frame_tag @playlist do
-            .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
-              .p-4
-                .flex.items-center.gap-x-4.w-full
-                  - if @playlist.any_valid_links?
-                    = link_to "Show my playlist", game_beatle_playlist_path(@playlist.game), class: "green-button justify-center w-full"
-
-                  - if policy(@playlist).update?
-                    = link_to "Edit my playlist", edit_game_beatle_playlist_path(@playlist.game), class: "white-button justify-center w-full"

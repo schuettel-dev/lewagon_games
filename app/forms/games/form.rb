@@ -36,18 +36,8 @@ class Games::Form < ApplicationForm
       beatle_playlists = @object.players.map(&:create_beatle_playlist)
 
       @object.players.each do |player|
-        sort_positions = (1..@object.players.size).to_a.shuffle
         beatle_playlists.excluding(player.beatle_playlist).each do |beatle_playlist|
-          # player.beatle_playlist_guesses << Game::BeatlePlaylistGuess.new(
-          #   guessing_player: player,
-          #   guessed_game_beatle_playlist: beatle_playlist,
-          #   sort_position: sort_positions.shift
-          # )
-          player.beatle_playlist_guesses.create(
-            # guessing_player: player,
-            guessed_game_beatle_playlist: beatle_playlist,
-            sort_position: sort_positions.shift
-          )
+          player.beatle_playlist_guesses.create(guessing_game_beatle_playlist: beatle_playlist)
         end
       end
     end
