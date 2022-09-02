@@ -6,15 +6,16 @@ class Game::BeatlePlaylist < ApplicationRecord
 
   scope :for_game, -> (game) { where(player: Player.for_game(game)) }
   scope :for_user, -> (user) { where(player: Player.for_user(user)) }
-  # scope :for_game_and_user, -> (game:, user:) { for_game(game).for_user(user) }
 
   def spotify_embed_url(attribute)
-    song_link = attributes[attribute.to_s]
-    spotify_song_id = String(song_link).split("spotify.com/track/")&.dig(1)&.split("?")&.dig(0)
+    song_id = spotify_song_id(attribute)
+    return if song_id.nil?
 
-    return unless spotify_song_id.present?
+    "https://open.spotify.com/embed/track/#{song_id}?utm_source=generator"
+  end
 
-    "https://open.spotify.com/embed/track/#{spotify_song_id}?utm_source=generator"
+  def spotify_song_id(attribute)
+    String(attributes[attribute.to_s]).split("spotify.com/track/")&.dig(1)&.split("?")&.dig(0)
   end
 
   def given_tracks_count

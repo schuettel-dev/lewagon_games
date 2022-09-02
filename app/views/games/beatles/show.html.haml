@@ -12,7 +12,6 @@
 
   - c.body do
     .flex.flex-col.gap-y-8.w-full
-
       / GUESSES
       - if @game.started?
         .flex.flex-col.gap-y-4.w-full
@@ -66,4 +65,4 @@
               .flex.items-center.gap-x-2
                 = render Users::NameWithAvatarComponent.new(user: player.user)
               .flex
-                = player.beatle_playlist.decorate.display_state
+                = render Games::Beatles::PlayerProgressComponent.new(player:)

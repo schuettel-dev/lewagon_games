@@ -7,6 +7,5 @@ class Player < ApplicationRecord
 
   scope :for_game, -> (game) { where(game:) }
   scope :for_user, -> (user) { where(user:) }
-  # scope :for_game_and_user, -> (game:, user:) { for_game(game).for_user(user) }
   scope :ordered, -> { joins(:user).order("users.nickname ASC") }
 end
