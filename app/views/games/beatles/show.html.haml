@@ -15,7 +15,7 @@
       / GUESSES
       - if @game.started?
         .flex.flex-col.gap-y-4.w-full
-          %h2.uppercase.cool-text-gradient Guesses
+          %h2.uppercase.cool-text-gradient Your Guesses
           .border.rounded-lg.px-4.py-6.bg-white
             = render Games::Beatles::GuessesComponent.new(game: @game, params:)
 
