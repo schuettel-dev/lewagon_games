@@ -15,6 +15,14 @@ class Game::BeatlePlaylistGuess < ApplicationRecord
     guessed_player.present?
   end
 
+  def compute_points!
+    update!(points: guessed_right? ? 1 : 0)
+  end
+
+  def guessed_right?
+    guessed_player == guessing_game_beatle_playlist.player
+  end
+
   private
 
   def guessed_playlist_does_not_belong_to_guessing_player

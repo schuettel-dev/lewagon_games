@@ -15,8 +15,8 @@ class Games::Beatles::PlaylistsController < ApplicationController
   private
 
   def set_playlist
-    game = policy_scope(Game).find_by!(id: params[:game_id])
-    @playlist = game.beatle_playlist_for_user(current_user)
+    game = policy_scope(Game).find(params[:game_id])
+    @playlist = Game::BeatlePlaylist.for_game(game).find(params[:id])
   end
 
   def game_beatle_playlist_params

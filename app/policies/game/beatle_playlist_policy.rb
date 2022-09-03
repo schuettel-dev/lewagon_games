@@ -1,11 +1,11 @@
 class Game::BeatlePlaylistPolicy < ApplicationPolicy
   def update?
-    record.game.in_preparation?
+    record.game.in_preparation? && record.player.user == user
   end
 
   class Scope < Scope
     def resolve
-      scope.for_user(user)
+      scope
     end
   end
 end

@@ -1,5 +1,5 @@
 class Game::BeatlePolicy < GamePolicy
   def show_own_playlist?
-    !record.initialized?
+    record.in_preparation? && record.started?
   end
 end

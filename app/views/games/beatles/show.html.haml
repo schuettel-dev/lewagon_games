@@ -12,13 +12,6 @@
 
   - c.body do
     .flex.flex-col.gap-y-8.w-full
-      / GUESSES
-      - if @game.started?
-        .flex.flex-col.gap-y-4.w-full
-          %h2.uppercase.cool-text-gradient Your Guesses
-          .border.rounded-lg.px-4.py-6.bg-white
-            = render Games::Beatles::GuessesComponent.new(game: @game, params:)
-
       / GENERAL
       .flex.flex-col.gap-y-4.w-full
         %h2.uppercase.cool-text-gradient General
@@ -42,6 +35,42 @@
               - c.term { "Players" }
               - c.with_description.with_content(@game.decorate.display_players_count)
 
+      / GUESSES
+      - if @game.started?
+        .flex.flex-col.gap-y-4.w-full
+          %h2.uppercase.cool-text-gradient Your Guesses
+          .border.rounded-lg.px-4.py-6.bg-white
+            = render Games::Beatles::GuessesComponent.new(game: @game, params:)
+
+      - if @game.ended?
+        .flex.flex-col.gap-y-4.w-full
+          %h2.uppercase.cool-text-gradient Results
+          .border.rounded-lg.px-4.py-6.bg-white
+            .grid.grid-cols-1.gap-x-8.text-xl
+              %table.w-full
+                %thead
+                  %tr
+                    %th
+                    %th.font-normal Rank
+                    %th.font-normal Points
+                    - @game.players.ordered.each do |player|
+                      %th.font-normal= player.decorate.display_user_name
+
+                %tbody
+                  - @game.players.ordered.each do |guessing_player|
+                    - player_guesses = Game::BeatlePlaylistGuess.where(guessing_player:).index_by(&:guessed_player)
+                    %tr
+                      %th.font-normal.text-left= guessing_player.decorate.display_user_name
+                      %td.text-center= guessing_player.rank
+                      %td.text-center= guessing_player.points
+                      - @game.players.ordered.each do |guessed_player|
+                        - points = player_guesses[guessed_player]&.points
+                        %td.text-center.text-sm{ class: points.nil? ? "bg-gray-100 text-gray-100" : (points.zero? ? "bg-red-100 text-red-600" : "bg-green-500 text-white") }
+                          = points
+              .w-full.text-gray-400.text-sm.text-right
+                (y = guessing player, x = guessed player)
+
+
       / MY PLAYLIST
       - if policy(@game).show_own_playlist?
         .flex.flex-col.gap-y-4.w-full
@@ -57,12 +86,27 @@
                     = link_to "Edit my playlist", edit_game_beatle_playlist_path(playlist.game), class: "white-button justify-center w-full"
 
       / PLAYERS
-      .flex.flex-col.gap-y-4.w-full
-        %h2.uppercase.cool-text-gradient Players
-        .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
-          - @game.players.ordered.each do |player|
-            .p-4.flex.justify-between.items-center
-              .flex.items-center.gap-x-2
-                = render Users::NameWithAvatarComponent.new(user: player.user)
+      - unless @game.ended?
+        .flex.flex-col.gap-y-4.w-full
+          %h2.uppercase.cool-text-gradient Players
+          .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
+            - @game.players.ordered.each do |player|
+              .p-4.flex.justify-between.items-center
+                .flex.items-center.gap-x-2
+                  = render Users::NameWithAvatarComponent.new(user: player.user)
+                .flex
+                  = render Games::Beatles::PlayerProgressComponent.new(player:)
+
+      - else
+        .flex.flex-col.gap-y-4.w-full
+          %h2.uppercase.cool-text-gradient Playlist guesses
+          .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
+            .flex.p-4.gap-8
               .flex
-                = render Games::Beatles::PlayerProgressComponent.new(player:)
+                %ul
+                  - @game.players.ordered.each do |player|
+                    %li
+                      = link_to player.decorate.display_user_name, game_beatle_playlist_path(@game, player.beatle_playlist), "data-turbo-frame": :beatle_playlist
+
+              .flex.w-full
+                = turbo_frame_tag(:beatle_playlist, src: game_beatle_playlist_path(@game, @game.beatle_playlist_for_user(current_user)), class: "w-full")
