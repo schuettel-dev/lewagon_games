@@ -6,7 +6,7 @@ class Games::BeatlesController < ApplicationController
 
   def progress
     @game.progress!
-    @game.finalize! if game.ended?
+    @game.finalize! if @game.ended?
     redirect_to @game
   end
 

@@ -80,10 +80,10 @@
             .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
               .p-4
                 .flex.items-center.gap-x-4.w-full
-                  = link_to "Show my playlist", game_beatle_playlist_path(playlist.game), class: "green-button justify-center w-full"
+                  = link_to "Show my playlist", game_beatle_playlist_path(playlist.game, playlist), class: "green-button justify-center w-full"
 
                   - if policy(playlist).update?
-                    = link_to "Edit my playlist", edit_game_beatle_playlist_path(playlist.game), class: "white-button justify-center w-full"
+                    = link_to "Edit my playlist", edit_game_beatle_playlist_path(playlist.game, playlist), class: "white-button justify-center w-full"
 
       / PLAYERS
       - unless @game.ended?
@@ -99,14 +99,4 @@
 
       - else
         .flex.flex-col.gap-y-4.w-full
-          %h2.uppercase.cool-text-gradient Playlist guesses
-          .bg-white.rounded-lg.border.flex.flex-col.divide-y.divide-gray-200.w-full
-            .flex.p-4.gap-8
-              .flex
-                %ul
-                  - @game.players.ordered.each do |player|
-                    %li
-                      = link_to player.decorate.display_user_name, game_beatle_playlist_path(@game, player.beatle_playlist), "data-turbo-frame": :beatle_playlist
-
-              .flex.w-full
-                = turbo_frame_tag(:beatle_playlist, src: game_beatle_playlist_path(@game, @game.beatle_playlist_for_user(current_user)), class: "w-full")
+          = turbo_frame_tag(:beatle_playlists, lazy: true, src: game_beatle_playlists_path(@game), class: "w-full")

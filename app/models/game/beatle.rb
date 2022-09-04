@@ -1,5 +1,5 @@
 class Game::Beatle < Game
-  def finalize
+  def finalize!
     self.class.transaction do
       compute_points_for_guesses!
       sum_up_points!

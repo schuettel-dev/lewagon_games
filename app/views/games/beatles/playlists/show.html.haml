@@ -5,14 +5,6 @@
     .w-full.flex.justify-end
       = link_to "Close", game_beatle_path(@playlist.game), class: "shy-link"
 
-    = turbo_frame_tag :beatle_playlist do
-      .flex.flex-col.gap-y-4
-        .w-full
-          = render Games::Beatles::PlaylistComponent.new(playlist: @playlist)
-
-        - if @playlist.game.state.in?(["started", "ended"])
-          .flex.flex-col.gap-y-1
-            %h3.font-bold Guesses
-            %ul.text-xl
-              - @playlist.beatle_playlist_guesses.where.not(guessed_player: nil).ordered.each do |guess|
-                %li= guess.decorate.display_guessing_player_guessed_player
+    .flex.flex-col.gap-y-4
+      .w-full
+        = render Games::Beatles::PlaylistComponent.new(playlist: @playlist)

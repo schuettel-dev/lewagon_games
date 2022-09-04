@@ -1,10 +1,17 @@
 class Games::Beatles::PlaylistsController < ApplicationController
-  before_action :set_playlist
+  before_action :set_game
+  before_action :set_playlist, only: [:update]
+
+  def index
+    authorize @game, :show_playlist_index?
+    @playlists = Game::BeatlePlaylist.for_game(@game).ordered_by_player
+    current_playlist_id = params[:selected_playlist_id] || @game.beatle_playlist_for_user(current_user).id
+    @current_playlist = @playlists.find_by(id: current_playlist_id)
+  end
 
   def update
     authorize @playlist
 
-    @game = @playlist.game
     if @playlist.update(game_beatle_playlist_params)
       redirect_to @game
     else
@@ -14,9 +21,12 @@ class Games::Beatles::PlaylistsController < ApplicationController
 
   private
 
+  def set_game
+    @game = policy_scope(Game).find(params[:game_id])
+  end
+
   def set_playlist
-    game = policy_scope(Game).find(params[:game_id])
-    @playlist = Game::BeatlePlaylist.for_game(game).find(params[:id])
+    @playlist = Game::BeatlePlaylist.for_game(@game).find(params[:id])
   end
 
   def game_beatle_playlist_params

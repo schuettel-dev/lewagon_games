@@ -7,6 +7,7 @@ class Game::BeatlePlaylist < ApplicationRecord
 
   scope :for_game, -> (game) { where(player: Player.for_game(game)) }
   scope :for_user, -> (user) { where(player: Player.for_user(user)) }
+  scope :ordered_by_player, -> { joins(player: :user).order("users.nickname ASC") }
 
   def spotify_embed_url(attribute)
     song_id = spotify_song_id(attribute)
