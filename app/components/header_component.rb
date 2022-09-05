@@ -1,6 +1,4 @@
-class HeaderComponent < ViewComponent::Base
-  include Devise::Controllers::Helpers
-
+class HeaderComponent < ApplicationComponent
   def render?
     signed_in?
   end

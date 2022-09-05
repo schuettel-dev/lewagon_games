@@ -1,0 +1,79 @@
+batch_81_mario:
+  batch: batch_81
+  user: mario
+  role: "owner"
+
+batch_81_luigi:
+  batch: batch_81
+  user: luigi
+  role: "student"
+
+batch_81_peach:
+  batch: batch_81
+  user: peach
+  role: "student"
+
+batch_81_toad:
+  batch: batch_81
+  user: toad
+  role: "student"
+
+batch_81_yoshi:
+  batch: batch_81
+  user: yoshi
+  role: "student"
+
+batch_82_doom:
+  batch: batch_82
+  user: doom
+  role: "owner"
+
+batch_82_qtip:
+  batch: batch_82
+  user: qtip
+  role: "student"
+
+batch_82_nas:
+  batch: batch_82
+  user: nas
+  role: "student"
+
+batch_82_ghostface:
+  batch: batch_82
+  user: ghostface
+  role: "student"
+
+batch_82_rakim:
+  batch: batch_82
+  user: rakim
+  role: "student"
+
+batch_82_guru:
+  batch: batch_82
+  user: guru
+  role: "student"
+
+batch_82_jeru:
+  batch: batch_82
+  user: jeru
+  role: "student"
+
+batch_83_sokrates:
+  batch: batch_83
+  user: sokrates
+  role: "owner"
+
+batch_83_diogenes:
+  batch: batch_83
+  user: diogenes
+  role: "owner"
+
+batch_83_hippocrates:
+  batch: batch_83
+  user: hippocrates
+  role: "owner"
+
+batch_83_plato:
+  batch: batch_83
+  user: plato
+  role: "owner"

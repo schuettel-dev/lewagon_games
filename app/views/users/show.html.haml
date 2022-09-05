@@ -1,0 +1,14 @@
+= render PageComponent.new do |c|
+  - c.heading(@user.nickname, "user")
+
+  - c.body do
+    .flex.flex-col.space-y-16.w-full
+      .w-full
+        = render Users::InfoComponent.new(user: @user)
+
+      .flex.flex-col.w-full.space-y-4
+        .flex.justify-between.items-center
+          %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Batches
+
+        .w-full
+          = render Users::BatchesTableComponent.new(user: @user)

@@ -1,0 +1,19 @@
+= render PageComponent.new do |c|
+  - c.heading("New user", :"user-group")
+
+  - c.body do
+    .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
+      = form_with(model: @form) do |f|
+        .flex.flex-col.space-y-8
+          .flex.flex-col
+            = f.label :github_nickname, "GitHub Nickname", class: "label"
+            = f.text_field :github_nickname, class: "input"
+            = render Forms::ErrorMessagesComponent.new(form: @form, field: :github_nickname)
+
+          .flex.items-center.space-x-8
+            = f.button type: :submit, class: "green-button" do
+              .h-6.w-6
+                = heroicon @form.submit_icon
+              = @form.submit_text
+
+            = link_to "Cancel", @form.cancel_path, class: "shy-link"

@@ -1,0 +1,12 @@
+= form_with(url: url, method: :get) do |f|
+  .flex.flex-col.space-y-8
+    .w-full
+      = f.label :search_query, label_text, class: "sr-only"
+      .flex.rounded-lg.shadow-sm
+        .relative.flex.items-stretch.flex-grow.focus-within:z-10
+          = f.text_field :search_query, required: true, placeholder: label_text, class: "focus:ring-purple-500 focus:border-purple-500 block w-full rounded-none rounded-l-lg border-gray-300 text-lg px-4 py-2", value: params[:search_query]
+
+        = f.button type: :submit, class: "-ml-px relative inline-flex items-center space-x-2 px-8 py-2 border border-gray-300 text-lg rounded-r-lg cool-bg-gradient text-white opacity-80 hover:opacity-100 transition focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500" do
+          .h-6.w-6
+            = heroicon :search
+          %span Search

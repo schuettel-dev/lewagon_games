@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+["lxxxvi"].each do |github_nickname|
+  params = ActionController::Parameters.new(user: { github_nickname: })
+  Users::Form.new(User.new, params).save
+  User.find_by(nickname: github_nickname).privilege_superadmin!
+end
+
+GameType.find_or_create_by(instance_type: "Game::Beatle") do |game|
+  game.name = "Beatle"
+end

@@ -1,0 +1,40 @@
+= render PageComponent.new do |c|
+  - c.heading("Users", "user-group")
+
+  - c.actions do
+    = link_to new_user_path, class: "py-2 pl-7 pr-8 bg-green-600 text-white text-xl rounded-xl flex items-center gap-x-1 hover:bg-green-500 transition" do
+      .h-6.w-6
+        = heroicon :"plus-sm"
+      New user
+
+  - c.body do
+    .w-full
+      .flex.justify-content.items-center
+        .grow
+          = render PagyComponent.new(pagy: @pagy)
+
+        .flex.items-center.gap-x-2
+          = render Forms::ResetSearchComponent.new(url: url_for)
+          = render Forms::SearchFormComponent.new(url: url_for, label_text: "Search users")
+      = render TableComponent.new do |table|
+        - table.header do |header|
+          - header.column(class: "w-1/12")
+          - header.column(class: "w-1/3") { "Nickname" }
+          - header.column(class: "w-1/6") { "Name" }
+          - header.column(class: "w-1/6") { "Memberships" }
+          - header.column(class: "w-1/6") { "Privilege" }
+          - header.column(class: "w-1/12")
+
+        - table.body do |body|
+          - @users.each do |user|
+            - body.row do |row|
+              - row.column do
+                .h-8.w-8
+                  = render Users::AvatarComponent.new(user)
+
+              - row.column { user.decorate.display_nickname }
+              - row.column { user.decorate.display_name }
+              - row.with_column.with_content(user.decorate.display_batches_count)
+              - row.with_column.with_content(user.decorate.display_privilege)
+              - row.column(class: "text-right") do
+                = link_to "Show", user_path(user), class: "fuchsia-link", "data-turbo-frame": "_top"

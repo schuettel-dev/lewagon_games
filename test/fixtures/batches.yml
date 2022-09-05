@@ -1,9 +1,14 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+batch_81:
+  name: "81"
+  url_identifier: "81"
+  location: "Tokyo"
 
-one:
-  name: MyString
-  location: MyString
+batch_82:
+  name: "82"
+  url_identifier: "82"
+  location: "New York"
 
-two:
-  name: MyString
-  location: MyString
+batch_83:
+  name: "83"
+  url_identifier: "83"
+  location: "Athens"

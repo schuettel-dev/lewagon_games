@@ -1,5 +1,5 @@
-class FlashComponent < ViewComponent::Base
+class FlashComponent < ApplicationComponent
   def render?
-    flash.any?
+    signed_in? && flash.any?
   end
 end

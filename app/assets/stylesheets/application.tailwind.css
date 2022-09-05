@@ -3,15 +3,39 @@
 @tailwind utilities;
 
 .h1 {
-  @apply text-5xl font-bold inline-block;
+  @apply text-5xl font-bold inline-block leading-24;
 }
 
-.cool-gradient {
+.fuchsia-link {
+  @apply text-fuchsia-500 opacity-50 hover:opacity-100 transition;
+}
+
+.shy-link {
+  @apply opacity-40 hover:opacity-80 transition;
+}
+
+.opacity-link {
+  @apply hover:opacity-50 transition;
+}
+
+.cool-text-gradient {
   @apply bg-gradient-to-r from-fuchsia-800 to-purple-800 bg-clip-text text-transparent;
 }
 
+.cool-bg-gradient {
+  @apply bg-gradient-to-br from-fuchsia-600 to-purple-600;
+}
+
+.label {
+  @apply block text-gray-500 text-lg;
+}
+
 .input {
-  @apply border-2 border-gray-500 p-3 bg-gray-200;
+  @apply w-full rounded-lg border border-gray-300 p-4 text-xl;
+}
+
+.select {
+  @apply block w-full rounded-lg border border-gray-300 py-2 text-xl;
 }
 
 .submit {
@@ -19,5 +43,75 @@
 }
 
 .main-navigation a {
-  @apply text-2xl text-white opacity-70 hover:opacity-100 transition;
+  @apply flex items-center gap-x-2 text-2xl text-white opacity-70 hover:opacity-100 transition;
+}
+
+.main-navigation a svg {
+  @apply h-8 w-8;
+}
+
+.green-button {
+  @apply py-2 pl-7 pr-8 bg-green-600 text-white cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-green-500 transition;
+}
+
+.gray-button {
+  @apply py-2 pl-7 pr-8 bg-gray-600 text-white cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-gray-500 transition;
+}
+
+.small-green-button {
+  @apply py-1 pl-3 pr-4 bg-green-600 text-white cursor-pointer rounded flex items-center gap-x-2 hover:bg-green-500 transition text-xs;
+}
+
+.white-button {
+  @apply py-2 pl-7 pr-8 bg-white text-gray-800 cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+}
+
+.small-white-button {
+  @apply py-1 pl-3 pr-4 bg-white text-gray-800 cursor-pointer rounded flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300 text-xs;
+}
+
+.white-dangerous-button {
+  @apply py-2 pl-7 pr-8 bg-white text-gray-800 cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-red-500 hover:text-white transition ring-1 ring-gray-300;
+}
+
+.small-white-dangerous-button {
+  @apply py-1 pl-3 pr-4 bg-white text-gray-800 cursor-pointer rounded flex items-center gap-x-2 hover:bg-red-500 hover:text-white transition ring-1 ring-gray-300 text-xs;
+}
+
+.fuchsia-button {
+  @apply py-2 pl-7 pr-8 bg-fuchsia-600 text-white cursor-pointer rounded-lg flex items-center gap-x-2 hover:bg-gray-50 transition ring-1 ring-gray-300;
+}
+
+.fuchsia-button[disabled] {
+  @apply hover:bg-fuchsia-600 cursor-default;
+}
+
+/* pagy */
+
+.pagy-nav,
+.pagy-nav-js {
+  @apply flex space-x-2 text-lg;
+}
+
+.pagy-nav .page a,
+.pagy-nav .page.active,
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page a,
+.pagy-nav-js .page.active,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  @apply block rounded-lg px-3 py-1 text-lg bg-white text-gray-900 font-semibold hover:bg-fuchsia-700 hover:text-white transition active:bg-fuchsia-700 active:text-white ring ring-1 ring-gray-200;
+}
+
+.pagy-nav .page.prev.disabled,
+.pagy-nav .page.next.disabled,
+.pagy-nav-js .page.prev.disabled,
+.pagy-nav-js .page.next.disabled {
+  @apply text-gray-300 cursor-default hover:bg-white hover:text-gray-300 active:text-gray-400 active:bg-gray-200;
+}
+
+.pagy-nav .page.active,
+.pagy-nav-js .page.active {
+  @apply text-white cursor-default bg-fuchsia-700 hover:text-white active:text-white;
 }

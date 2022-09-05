@@ -1,0 +1,16 @@
+= turbo_frame_tag to_dom_id do
+  .grid.grid-cols-3.border.rounded-lg.p-8.bg-white
+    .flex
+      = render InfoFactComponent.new do |c|
+        - c.term { "Owner" }
+        - c.description { render Users::NameWithAvatarComponent.new(user: batch.owner) }
+
+    .flex
+      = render InfoFactComponent.new do |c|
+        - c.term { "Location" }
+        - c.description { batch.decorate.display_location }
+
+    .flex
+      = render InfoFactComponent.new do |c|
+        - c.term { "Members" }
+        - c.with_description.with_content(batch.decorate.display_users_count)

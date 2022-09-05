@@ -1,0 +1,17 @@
+= turbo_frame_tag dom_id(current_player, :playlist_guess_form), class: "flex items-center justify-center" do
+  .flex.flex-col.gap-y-2.items-center.justify-center
+    .flex.gap-2
+      - guesses.each_with_index do |guess, index|
+        = link_to game_beatle_path(game, guess_page: index), "data-turbo-frame": dom_id(game, :guesses), class: "opacity-100 hover:opacity-60 transition" do
+          .h-6.w-6.rounded-full{
+            class: class_names(
+              "bg-fuchsia-500": guess.guessed?,
+              "bg-gray-200": !guess.guessed?,
+              "ring-2 ring-gray-400": guess == current_guess)
+            }
+    .flex
+      = form_with(model: current_guess, url: game_beatle_playlist_guess_path(game, current_guess)) do |f|
+        .flex.flex-col.justify-center.gap-y-2
+          = f.label :guessed_player_id, "Playlist belongs to", class: "label"
+          = f.select :guessed_player_id, guessed_player_options, {include_blank: true} , class: "select"
+          = f.submit "Save", class: "green-button"

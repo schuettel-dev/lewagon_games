@@ -1,0 +1,10 @@
+%h1 Your tracks
+
+= turbo_frame_tag dom_id(@playlist) do
+  .bg-white.rounded-lg.p-4.border
+    .w-full.flex.justify-end
+      = link_to "Close", game_beatle_path(@playlist.game), class: "shy-link"
+
+    .flex.flex-col.gap-y-4
+      .w-full
+        = render Games::Beatles::PlaylistComponent.new(playlist: @playlist)

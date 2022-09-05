@@ -1,0 +1,24 @@
+= render PageComponent.new do |c|
+  - c.heading("New game", :puzzle)
+
+  - c.body do
+    .min-w-full.overflow-hidden.shadow.ring-1.ring-black.ring-opacity-5.rounded-xl.bg-white.p-8
+      = form_with(model: @game, url: games_path) do |f|
+        .flex.flex-col.space-y-8
+          .flex.flex-col
+            = f.label :game_type_id, "Game", class: "label"
+            = f.select :game_type_id, @form.game_types_as_options, {}, class: "select"
+            = render Forms::ErrorMessagesComponent.new(form: @form, field: :game_type_id)
+
+          .flex.flex-col
+            = f.label :batch_id, class: "label"
+            = f.select :batch_id, @form.batches_as_options, {include_blank: true}, class: "select"
+            = render Forms::ErrorMessagesComponent.new(form: @form, field: :batch_id)
+
+          .flex.items-center.space-x-8
+            = f.button type: :submit, class: "green-button" do
+              .h-6.w-6
+                = heroicon :"plus-sm"
+              Create game
+
+            = link_to "Cancel", games_path, class: "shy-link"

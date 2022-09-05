@@ -1,0 +1,8 @@
+.flex.flex-col.items-center.justify-center.h-screen.space-y-8
+  .text-center.bg-white.py-16.px-32.rounded-2xl.shadow
+    %h1.font-bold.text-7xl.leading-24.bg-gradient-to-br.from-fuchsia-600.via-violet-700.to-purple-900.bg-clip-text.text-transparent le wagon games
+    .my-10
+      = button_to "Sign in with GitHub", user_github_omniauth_authorize_path, class: "bg-fuchsia-900 text-white py-4 px-16 text-2xl rounded-xl hover:bg-fuchsia-700 transition", "data-turbo": false
+  - if flash.notice.present?
+    .bg-white.rounded-2xl.py-4.px-20
+      = flash.notice

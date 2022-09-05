@@ -1,0 +1,19 @@
+.w-full.bg-white.border.border-gray-200.p-8.rounded-lg
+  .flex.justify-between.items-center
+    .flex.items-baseline.gap-x-6
+      .text-3xl.cool-text-gradient
+        = game.decorate.display_game_type
+
+      .text-xs
+        .py-1.px-3.bg-gray-200.rounded-xl
+          = game.decorate.display_state
+
+      .text-base
+        = game.decorate.display_batch
+      .text-gray-500
+        = I18n.t("game.shared.players_with_count", count: game.decorate.display_players_count)
+      .text-xs.text-gray-500
+        = game.decorate.display_id
+
+
+    = link_to "Go to game", game, class: "green-button"

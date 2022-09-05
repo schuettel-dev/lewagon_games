@@ -1,0 +1,5 @@
+= render PageComponent.new do |c|
+  - c.heading("New batch", :hashtag)
+
+  - c.body do
+    = render "form", form: @form

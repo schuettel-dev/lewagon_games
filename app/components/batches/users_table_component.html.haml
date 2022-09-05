@@ -1,0 +1,17 @@
+= turbo_frame_tag to_dom_id do
+  = render TableComponent.new do |table|
+    - table.header do |header|
+      - header.column(class: "text-lg") { "User" }
+      - header.column(class: "text-lg") { "Role" }
+      - header.column
+
+    - table.body do |body|
+      = batch.memberships.user_nicknames_alphabetically.each do |membership|
+        - body.row do |row|
+          - row.column(class: "text-2xl") do
+            = render Users::NameWithAvatarComponent.new(user: membership.user)
+          - row.column(class: "text-2xl") do
+            = render Memberships::RoleComponent.new(membership:, redirect_url: url_for)
+
+          - row.column(class: "flex justify-end") do
+            = render Memberships::RemoveComponent.new(membership:)

@@ -1,10 +1,19 @@
 class User < ApplicationRecord
+  include Privileges
+
   devise :omniauthable, omniauth_providers: %i[github]
 
-  scope :nicknames_alphabetically, -> { order(nickname: :asc) }
-  scope :github_users, -> { where(provider: :github) }
+  has_many :memberships
+  has_many :batches, through: :memberships
 
-  def self.find_by_github_uid(uid)
-    github_users.find_by(uid:)
+  scope :nicknames_alphabetically, -> { order(nickname: :asc) }
+  scope :search, ->(query) {
+    return none if query.blank?
+
+    where("(UPPER(nickname) LIKE :query OR UPPER(name) LIKE :query)", query: "%#{query.upcase}%")
+  }
+
+  def to_param
+    github_id
   end
 end

@@ -1,0 +1,29 @@
+beatle_batch_81_mario_playlist:
+  player: beatle_batch_81_mario
+  track_1_url: "https://open.spotify.com/track/6q3IF6YhSklm5q7Wygc6Qy?si=8a8b40fe1a2b4737" # Digitalism - Zdarlight
+  track_2_url: "https://open.spotify.com/track/00cxhG668jV6gU6VK2FUVI?si=d4905c8f7a664697" # Calvin Harris - Acceptable in the 80's
+  track_3_url: "https://open.spotify.com/track/6q1OTBE6VFcJDmysQj0eaG?si=2227e8e825814ef0" # Jabberwocky - Photomaton
+
+beatle_batch_81_luigi_playlist:
+  player: beatle_batch_81_luigi
+  track_1_url: "https://open.spotify.com/track/0aqR5bgmid39zzjuJofio7?si=3ca3338b070a4195" # Danger Mouse - Aquamarine
+  track_2_url: "https://open.spotify.com/track/3tSdVDfHQqeSSX9Vy5UuRg?si=1b27bf7ab2a54c07" # Carol Jones - Don't Destroy Me
+  track_3_url: "https://open.spotify.com/track/42EWWPQeLSkPp8nCMh0Oa4?si=d7d525ad8a1049e5" # Ernie K-Doe - Here Come The Girls
+
+beatle_batch_81_peach_playlist:
+  player: beatle_batch_81_peach
+  track_1_url: "https://open.spotify.com/track/2v3MAJk5WuxzYGK9JwXP1p?si=9c57133016f54f08" # Pete Rock - The Boss
+  track_2_url: "https://open.spotify.com/track/50Dfp4PZQqvXLlniASKpTY?si=f807804f018d472b" # Jamie xx - Obvs
+  track_3_url: "https://open.spotify.com/track/3m5i3P2r5qDImP45cACsBW?si=0ea6b7e74d3d4854" # Clap! Clap! - Kuy Yato
+
+beatle_batch_81_toad_playlist:
+  player: beatle_batch_81_toad
+  track_1_url: "https://open.spotify.com/track/3bPqgo3RO3ZESEpyCdNsnr?si=c75f4b0901834e80" # DANGERDOOM - Sofa King
+  track_2_url: "https://open.spotify.com/track/7oFiFPltiQTBqVutyiSwvE?si=0a9b814810ba4235" # MF DOOM - Figaro
+  track_3_url: "https://open.spotify.com/track/39VMTN5lZ9x41aySZGTbsJ?si=4a6ce3b45ea049e3" # KMD - Peachfuzz
+
+beatle_batch_81_yoshi_playlist:
+  player: beatle_batch_81_yoshi
+  track_1_url: "https://open.spotify.com/track/4a01ClusxuZiloOK5UgLUn?si=339f0efc6eb34329" # The Supremes - You Keep Me Hangin' On
+  track_2_url: "https://open.spotify.com/track/0LFS7LWVSF3grmR3y8JQya?si=3111a74e66424289" # Wendy Rene - Bar-B-Q
+  track_3_url: "https://open.spotify.com/track/2VTUydkNZkE1fZcqX6Hn3r?si=e05f0ec06e71479d" # The Shirelles - Mama Said

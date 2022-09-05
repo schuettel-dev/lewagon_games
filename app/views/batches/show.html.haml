@@ -1,0 +1,23 @@
+= render PageComponent.new do |c|
+  - c.heading(@batch.decorate.display_name_for_heading, :hashtag)
+  - if policy(@batch).update?
+    - c.actions do
+      = link_to edit_batch_path(@batch), class: "gray-button" do
+        .h-6.w-6
+          = heroicon :pencil
+        Edit
+
+  - c.body do
+    .flex.flex-col.space-y-16.w-full
+      .w-full
+        = render Batches::InfoComponent.new(batch: @batch)
+
+      .flex.flex-col.w-full.space-y-4
+        .flex.justify-between.items-center
+          %h2.text-lg.uppercase.cool-text-gradient.font-bold.opacity-90.tracking-wide Members
+
+        - if policy(@batch).update?
+          = turbo_frame_tag :batches__add_member_form do
+            = render Batches::AddMemberButtonComponent.new(batch: @batch)
+
+        = render Batches::UsersTableComponent.new(batch: @batch)

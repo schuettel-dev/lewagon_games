@@ -1,0 +1,25 @@
+= turbo_frame_tag dom_id(player, :player_progress) do
+  - if game.in_preparation?
+    .inline-flex.items-center.gap-x-1
+      - Game::BeatlePlaylist::TRACK_COLUMNS.each do |column|
+
+        - playlist = player.beatle_playlist
+        - state = playlist.spotify_song_id(column).present? ? :valid : (playlist.attributes[column.to_s].nil? ? :not_set : :invalid)
+        .h-4.w-4.rounded-full.opacity-80.hover:opacity-100{ class: class_names(
+            "bg-gray-300": state == :not_set,
+            "bg-green-600": state == :valid,
+            "bg-orange-200": state == :invalid
+          ),
+          title: state == :valid ? "Track set" : "Track not set or invalid"
+        }
+
+  - elsif game.started?
+    .inline-flex.items-center.gap-x-1
+      - player.beatle_playlist_guesses.ordered.each do |guess|
+        - state = guess.guessed? ? :casted : :not_casted
+        .h-4.w-4.rounded-full.opacity-80.hover:opacity-100{ class: class_names(
+            "bg-gray-300": state == :not_casted,
+            "bg-fuchsia-600": state == :casted,
+          ),
+          title: state == :valid ? "Guess casted" : "Guess not casted"
+        }
