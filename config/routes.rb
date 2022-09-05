@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "dashboards#show"
+  root to: "games#index"
 
   devise_for(:users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" })
 

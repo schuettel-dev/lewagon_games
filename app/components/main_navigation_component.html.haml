@@ -1,9 +1,5 @@
 .w-full.flex.justify-between.items-center
   %nav.main-navigation.flex.items-center.space-x-8
-    = link_to root_path do
-      = heroicon :play
-      Dashboard
-
     - if policy(Game).index?
       = link_to games_path do
         = heroicon :puzzle
