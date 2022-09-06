@@ -16,7 +16,6 @@ class GamesController < ApplicationController
     if @form.save
       redirect_to @form.object
     else
-      puts "ERRORS #{@form.errors.to_a}"
       render :new, status: :unprocessable_entity
     end
   end

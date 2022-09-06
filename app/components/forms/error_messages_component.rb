@@ -4,6 +4,7 @@ class Forms::ErrorMessagesComponent < ApplicationComponent
   def initialize(form:, field:)
     @form = form
     @field = field
+    super()
   end
 
   def render?

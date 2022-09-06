@@ -16,10 +16,6 @@ AllCops:
 Rails:
   Enabled: true
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: "double_quotes"
-
 Gemspec/DeprecatedAttributeAssignment:
   Enabled: true
 
@@ -221,6 +217,9 @@ Minitest/AssertPathExists:
   Enabled: true
 
 Minitest/AssertPredicate:
+  Enabled: true
+
+Minitest/AssertRaisesCompoundBody:
   Enabled: true
 
 Minitest/AssertSilent:
@@ -493,6 +492,9 @@ Style/KeywordParametersOrder:
 Style/Lambda:
   Enabled: false
 
+Style/MagicCommentFormat:
+  Enabled: true
+
 Style/MapCompactWithConditionalBlock:
   Enabled: true
 
@@ -573,6 +575,10 @@ Style/StringChars:
 
 Style/StringConcatenation:
   Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
 
 Style/SwapValues:
   Enabled: true

@@ -1,7 +1,4 @@
 class MembershipsController < ApplicationController
-  def create
-  end
-
   def update
     @membership = policy_scope(Membership).find(params[:id])
     @redirect_url = batch_membership_params[:redirect_url]
@@ -15,7 +12,7 @@ class MembershipsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy # rubocop:disable Metrics/MethodLength
     membership = Membership.find(params[:id])
     @object = params[:redirect_to_user].present? ? membership.user : membership.batch
     membership.destroy

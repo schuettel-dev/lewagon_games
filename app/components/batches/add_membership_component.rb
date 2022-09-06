@@ -5,6 +5,7 @@ class Batches::AddMembershipComponent < ApplicationComponent
 
   def initialize(batch: nil, user: nil)
     @membership = Membership.find_or_initialize_by(batch:, user:)
+    super()
   end
 
   def render?

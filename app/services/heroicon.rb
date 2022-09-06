@@ -4,7 +4,7 @@ class Heroicon
   end
 
   def call
-    Rails.root.join("./app/assets/images/icons/heroicons/", filename).read.html_safe
+    Rails.root.join("./app/assets/images/icons/heroicons/", filename).read.html_safe # rubocop:disable Rails/OutputSafety
   end
 
   private

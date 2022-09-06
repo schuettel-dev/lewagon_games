@@ -1,8 +1,7 @@
 class Games::BeatlesController < ApplicationController
   before_action :set_and_authorize_game, only: [:show, :progress]
 
-  def show
-  end
+  def show; end
 
   def progress
     @game.progress!

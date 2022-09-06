@@ -24,7 +24,7 @@ class Games::Form < ApplicationForm
     batches_scope.ordered_by_name.map(&method(:to_option))
   end
 
-  def save
+  def save # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     return unless valid?
 
     Game.transaction do

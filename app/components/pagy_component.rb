@@ -3,6 +3,7 @@ class PagyComponent < ApplicationComponent
 
   def initialize(pagy:)
     @pagy = pagy
+    super()
   end
 
   def render?
@@ -10,6 +11,6 @@ class PagyComponent < ApplicationComponent
   end
 
   def call
-    raw pagy_nav(@pagy)
+    raw pagy_nav(@pagy) # rubocop:disable Rails/OutputSafety
   end
 end

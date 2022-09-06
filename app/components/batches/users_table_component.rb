@@ -3,6 +3,7 @@ class Batches::UsersTableComponent < ApplicationComponent
 
   def initialize(batch:)
     @batch = batch
+    super()
   end
 
   def to_dom_id

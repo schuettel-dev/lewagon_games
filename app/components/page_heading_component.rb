@@ -4,5 +4,6 @@ class PageHeadingComponent < ApplicationComponent
   def initialize(text, icon)
     @text = text
     @icon = icon
+    super()
   end
 end

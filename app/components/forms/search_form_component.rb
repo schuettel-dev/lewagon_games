@@ -4,5 +4,6 @@ class Forms::SearchFormComponent < ApplicationComponent
   def initialize(url:, label_text:)
     @url = url
     @label_text = label_text
+    super()
   end
 end

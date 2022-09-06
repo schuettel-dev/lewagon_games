@@ -1,8 +1,8 @@
 class Batches::MembershipsController < ApplicationController
-  before_action :set_batch, only: [:new, :create, :destroy]
+  before_action :set_batch, only: [:new, :create]
 
   def new
-    @batch = Batch.eager_load(:users).find_by!(url_identifier: params[:batch_id])
+    authorize @batch, :new?
   end
 
   def create

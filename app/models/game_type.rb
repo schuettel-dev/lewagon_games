@@ -1,5 +1,5 @@
 class GameType < ApplicationRecord
-  has_many :games
+  has_many :games, dependent: :destroy
 
   validates :name, :description, :instance_type, presence: true
   validates :name, uniqueness: true

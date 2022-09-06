@@ -1,5 +1,5 @@
 class BatchesController < ApplicationController
-  before_action :set_and_authorize_batch, only: [:show, :edit, :update, :destroy]
+  before_action :set_and_authorize_batch, only: [:show, :edit, :update]
 
   def index
     authorize Batch

@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: %i[github]
 
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :batches, through: :memberships
 
   scope :nicknames_alphabetically, -> { order(nickname: :asc) }

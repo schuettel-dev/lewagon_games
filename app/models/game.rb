@@ -1,12 +1,12 @@
 class Game < ApplicationRecord
-  belongs_to :game_type
-  belongs_to :batch
-  belongs_to :user
+  belongs_to :game_type, dependent: :destroy
+  belongs_to :batch, dependent: :destroy
+  belongs_to :user, dependent: :destroy
 
   has_many :players, dependent: :destroy
   has_many :users, through: :players
 
-  scope :having_user_as_player, -> (user) { where(players: Player.where(user:)) }
+  scope :having_user_as_player, ->(user) { where(players: Player.where(user:)) }
   scope :ordered, -> { order(id: :desc) }
 
   enum state: {

@@ -1,10 +1,10 @@
 class Batch < ApplicationRecord
-  has_many :memberships
-  has_many :users, through: :memberships
-  has_many :games
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships, dependent: :destroy
+  has_many :games, dependent: :destroy
 
-  has_one :owner_membership, -> { role_owner }, class_name: "Membership"
-  has_one :owner, through: :owner_membership, source: :user
+  has_one :owner_membership, -> { role_owner }, class_name: "Membership", dependent: :destroy # rubocop:disable Rails/InverseOf
+  has_one :owner, through: :owner_membership, source: :user, dependent: :destroy
 
   before_validation :set_url_identifier, if: :new_record?
 
