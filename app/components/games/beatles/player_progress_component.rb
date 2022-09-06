@@ -5,6 +5,7 @@ class Games::Beatles::PlayerProgressComponent < ApplicationComponent
 
   def initialize(player:)
     @player = player
+    super()
   end
 
   def game

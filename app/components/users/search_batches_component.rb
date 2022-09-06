@@ -4,6 +4,7 @@ class Users::SearchBatchesComponent < ApplicationComponent
   def initialize(user:, **params)
     @user = user
     @params = params
+    super()
   end
 
   def search_performed?

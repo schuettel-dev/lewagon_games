@@ -4,6 +4,7 @@ class Memberships::RemoveComponent < ApplicationComponent
   def initialize(membership:, redirect_to_user: false)
     @membership = membership
     @redirect_to_user = redirect_to_user
+    super()
   end
 
   def render?

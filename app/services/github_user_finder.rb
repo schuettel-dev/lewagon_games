@@ -31,7 +31,7 @@ class GithubUserFinder
   private
 
   def find_github_user
-    JSON.parse(URI.open(github_user_url).read)
+    JSON.parse(URI.parse(github_user_url).open.read)
   rescue OpenURI::HTTPError
     {}
   end

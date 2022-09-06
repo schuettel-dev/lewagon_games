@@ -19,7 +19,7 @@ class Game::Beatle < Game
 
   def compute_ranking!
     players.distinct(:points).order(points: :desc).pluck(:points).each_with_index do |points, index|
-      players.where(points:).update_all(rank: index + 1)
+      players.where(points:).update_all(rank: index + 1) # rubocop:disable Rails/SkipsModelValidations
     end
   end
 end

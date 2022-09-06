@@ -12,7 +12,7 @@ class MembershipsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy # rubocop:disable Metrics/MethodLength
     membership = Membership.find(params[:id])
     @object = params[:redirect_to_user].present? ? membership.user : membership.batch
     membership.destroy

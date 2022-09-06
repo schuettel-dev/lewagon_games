@@ -1,7 +1,7 @@
 class Game < ApplicationRecord
-  belongs_to :game_type
-  belongs_to :batch
-  belongs_to :user
+  belongs_to :game_type, dependent: :destroy
+  belongs_to :batch, dependent: :destroy
+  belongs_to :user, dependent: :destroy
 
   has_many :players, dependent: :destroy
   has_many :users, through: :players

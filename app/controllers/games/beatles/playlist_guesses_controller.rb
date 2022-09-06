@@ -1,7 +1,7 @@
 class Games::Beatles::PlaylistGuessesController < ApplicationController
   before_action :set_game, only: :update
 
-  def update
+  def update # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     beatle_playlist_guess = current_players_playlist_guesses_scope.find(params[:id])
     authorize beatle_playlist_guess
 
@@ -14,7 +14,7 @@ class Games::Beatles::PlaylistGuessesController < ApplicationController
         @current_guess = beatle_playlist_guess
       end
       format.html do
-        guess_page = current_players_playlist_guesses_scope.pluck(:id).index(beatle_playlist_guess.id)
+        guess_page = current_players_playlist_guesses_scope.ids.index(beatle_playlist_guess.id)
         redirect_to game_beatle_path(@game, guess_page:)
       end
     end

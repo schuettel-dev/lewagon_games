@@ -4,6 +4,7 @@ class Memberships::RoleComponent < ApplicationComponent
   def initialize(membership:, redirect_url:)
     @membership = membership
     @redirect_url = redirect_url
+    super()
   end
 
   def to_dom_id

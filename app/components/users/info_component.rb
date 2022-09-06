@@ -3,6 +3,7 @@ class Users::InfoComponent < ApplicationComponent
 
   def initialize(user:)
     @user = user
+    super()
   end
 
   def to_dom_id

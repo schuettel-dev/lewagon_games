@@ -9,6 +9,7 @@ class ViewComponentWithOptions < ApplicationComponent
     elsif options.key?(:class)
       @options[:class] << " #{options[:class]}"
     end
+    super()
   end
 
   def defaults

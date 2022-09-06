@@ -3,6 +3,7 @@ class Batches::AddMemberButtonComponent < ApplicationComponent
 
   def initialize(batch:)
     @batch = batch
+    super()
   end
 
   def render?

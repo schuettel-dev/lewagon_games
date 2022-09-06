@@ -4,6 +4,7 @@ class Games::Beatles::GuessesComponent < ApplicationComponent
   def initialize(game:, params:)
     @game = game
     @params = params
+    super()
   end
 
   def current_player

@@ -4,6 +4,7 @@ class Games::Beatles::PlaylistGuessFormComponent < ApplicationComponent
   def initialize(current_player:, current_guess:)
     @current_player = current_player
     @current_guess = current_guess
+    super()
   end
 
   def guesses

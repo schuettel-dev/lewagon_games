@@ -1,9 +1,9 @@
-namespace :fake do
+namespace :fake do # rubocop:disable Metrics/BlockLength
   desc "Fake some users"
   task users: :environment do
     raise "this can only run in development" unless Rails.env.development?
 
-    DEFAULT_IMAGE_URL = "https://avatars.githubusercontent.com/u/77623418?s=200&v=4".freeze
+    image_url = "https://avatars.githubusercontent.com/u/77623418?s=200&v=4"
 
     250.times do |_index|
       name = Faker::Name.name
@@ -17,7 +17,7 @@ namespace :fake do
         github_id: Faker::Number.unique.number(digits: 10),
         nickname: "#{name.parameterize(separator: '.')}--#{Faker::Alphanumeric.alpha(number: 3)}",
         name:,
-        image_url: DEFAULT_IMAGE_URL,
+        image_url:,
         privilege:
       )
     end

@@ -2,14 +2,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # See https://github.com/omniauth/omniauth/wiki/FAQ#rails-session-is-clobbered-after-callback-on-developer-strategy
   skip_before_action :verify_authenticity_token, only: :github
 
-  def github
+  def github # rubocop:disable Metrics/AbcSize
     @user = User.find_by(github_id: request.env["omniauth.auth"].uid)
 
     return handle_user_present if @user.present?
 
     # Removing :extra as it can overflow some session stores
     session["devise.github_data"] = request.env["omniauth.auth"].except(:extra)
-    flash[:notice] = "Could not sign in"
+    flash[:notice] = "Could not sign in" # rubocop:disable Rails/I18nLocaleTexts
     redirect_to new_user_session_path
   end
 

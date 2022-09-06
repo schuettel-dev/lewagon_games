@@ -3,6 +3,7 @@ class Memberships::FormComponent < ApplicationComponent
 
   def initialize(form:)
     @form = form
+    super()
   end
 
   def to_dom_id

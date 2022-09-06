@@ -1,6 +1,7 @@
 class Users::AvatarComponent < ApplicationComponent
   def initialize(user)
     @user = user
+    super()
   end
 
   def call

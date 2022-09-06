@@ -3,7 +3,10 @@ class Game::BeatlePlaylist < ApplicationRecord
 
   delegate :game, to: :player
   belongs_to :player
-  has_many :beatle_playlist_guesses, foreign_key: :guessing_game_beatle_playlist_id
+  has_many :beatle_playlist_guesses,
+           foreign_key: :guessing_game_beatle_playlist_id,
+           dependent: :destroy,
+           inverse_of: :guessing_game_beatle_playlist
 
   scope :for_game, ->(game) { where(player: Player.for_game(game)) }
   scope :for_user, ->(user) { where(player: Player.for_user(user)) }

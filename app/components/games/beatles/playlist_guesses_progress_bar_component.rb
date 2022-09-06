@@ -3,6 +3,7 @@ class Games::Beatles::PlaylistGuessesProgressBarComponent < ApplicationComponent
 
   def initialize(current_player:)
     @current_player = current_player
+    super()
   end
 
   def guesses

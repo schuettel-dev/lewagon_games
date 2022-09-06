@@ -3,6 +3,7 @@ class Forms::ResetSearchComponent < ApplicationComponent
 
   def initialize(url:)
     @url = url
+    super()
   end
 
   def render?

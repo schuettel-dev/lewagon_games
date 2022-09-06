@@ -5,6 +5,7 @@ class Users::NameWithAvatarComponent < ApplicationComponent
 
   def initialize(user:)
     @user = user.decorate
+    super()
   end
 
   def display_nickname
