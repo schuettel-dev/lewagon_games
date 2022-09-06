@@ -1,12 +1,20 @@
 class Games::Beatles::PlaylistsController < ApplicationController
   before_action :set_game
-  before_action :set_playlist, only: [:update]
+  before_action :set_playlist, only: [:show, :edit, :update]
 
   def index
     authorize @game, :show_playlist_index?
     @playlists = Game::BeatlePlaylist.for_game(@game).ordered_by_player
     current_playlist_id = params[:selected_playlist_id] || @game.beatle_playlist_for_user(current_user).id
     @current_playlist = @playlists.find_by(id: current_playlist_id)
+  end
+
+  def show
+    authorize @playlist
+  end
+
+  def edit
+    authorize @playlist
   end
 
   def update
