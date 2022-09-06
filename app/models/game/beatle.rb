@@ -8,7 +8,7 @@ class Game::Beatle < Game
   end
 
   def compute_points_for_guesses!
-    Game::BeatlePlaylistGuess.where(guessing_player: players).each(&:compute_points!)
+    Game::BeatlePlaylistGuess.where(guessing_player: players).find_each(&:compute_points!)
   end
 
   def sum_up_points!

@@ -6,7 +6,7 @@ class Game < ApplicationRecord
   has_many :players, dependent: :destroy
   has_many :users, through: :players
 
-  scope :having_user_as_player, -> (user) { where(players: Player.where(user:)) }
+  scope :having_user_as_player, ->(user) { where(players: Player.where(user:)) }
   scope :ordered, -> { order(id: :desc) }
 
   enum state: {

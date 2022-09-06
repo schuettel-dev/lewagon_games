@@ -6,7 +6,8 @@ class Game::BeatlePlaylistDecorator < ApplicationDecorator
 
     return "invalid URL (#{attributes[track.to_s]})" if src.nil?
 
-    tag.iframe src:, class: "rounded-lg", width: "100%", height: "80", frameBorder: 0, allowfullscreen: "", allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    tag.iframe src:, class: "rounded-lg", width: "100%", height: "80", frameBorder: 0, allowfullscreen: "",
+               allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
   end
 
   def display_state

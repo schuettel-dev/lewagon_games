@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: :github
 
   def github
-    @user = User.find_by(github_id: request.env["omniauth.auth"].uid) # rubocop:disable Rails/DynamicFindBy
+    @user = User.find_by(github_id: request.env["omniauth.auth"].uid)
 
     return handle_user_present if @user.present?
 

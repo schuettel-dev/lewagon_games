@@ -19,8 +19,6 @@ class MembershipPolicy < ApplicationPolicy
     !record.role_owner?
   end
 
-  private
-
   class Scope < Scope
     def resolve
       return scope if user.any_admin?

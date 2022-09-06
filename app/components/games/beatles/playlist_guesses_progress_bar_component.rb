@@ -17,9 +17,7 @@ class Games::Beatles::PlaylistGuessesProgressBarComponent < ApplicationComponent
     guesses.count
   end
 
-  def guessed_count
-    guessed.count
-  end
+  delegate :count, to: :guessed, prefix: true
 
   def guessed_percentage
     guessed_count.positive? ? (guessed_count.to_f / total_guesses * 100.0) : 0

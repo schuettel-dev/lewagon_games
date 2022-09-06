@@ -4,9 +4,7 @@ class GithubUserFinder
   API_URL = "https://api.github.com/users/".freeze
 
   GithubUser = Struct.new(:params) do
-    def present?
-      id.present?
-    end
+    delegate :present?, to: :id
 
     def id
       params["id"]

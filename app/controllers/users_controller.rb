@@ -6,8 +6,7 @@ class UsersController < ApplicationController
     @pagy, @users = pagy(find_users)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     authorize User

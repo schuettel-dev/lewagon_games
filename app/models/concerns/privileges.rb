@@ -9,7 +9,7 @@ module Privileges
     }, _prefix: :privilege
 
     def any_admin?
-      ["admin", "superadmin"].intersection(self.class.privileges.values).include?(privilege)
+      %w[admin superadmin].intersection(self.class.privileges.values).include?(privilege)
     end
   end
 end

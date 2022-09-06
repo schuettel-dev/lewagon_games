@@ -5,8 +5,8 @@ class Game::BeatlePlaylist < ApplicationRecord
   belongs_to :player
   has_many :beatle_playlist_guesses, foreign_key: :guessing_game_beatle_playlist_id
 
-  scope :for_game, -> (game) { where(player: Player.for_game(game)) }
-  scope :for_user, -> (user) { where(player: Player.for_user(user)) }
+  scope :for_game, ->(game) { where(player: Player.for_game(game)) }
+  scope :for_user, ->(user) { where(player: Player.for_user(user)) }
   scope :ordered_by_player, -> { joins(player: :user).order("users.nickname ASC") }
 
   def spotify_embed_url(attribute)
