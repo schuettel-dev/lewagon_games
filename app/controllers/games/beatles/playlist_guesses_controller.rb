@@ -10,7 +10,6 @@ class Games::Beatles::PlaylistGuessesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        puts "********************* IN RESPOND_TO"
         @current_player = @game.players.find_by(user: current_user)
         @current_guess = beatle_playlist_guess
       end
