@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def new
-    flash[:notice] = "Could not sign in" # rubocop:disable Rails/I18nLocaleTexts
   end
 
   private
