@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get "/sign_in", to: "sessions#new", as: :new_user_session
 
-  resource :dashboard, only: [:show]
-
   resources :batches, only: [:index, :show, :new, :create, :update, :edit] do
     resources :memberships, only: [:new, :create], module: :batches
   end
