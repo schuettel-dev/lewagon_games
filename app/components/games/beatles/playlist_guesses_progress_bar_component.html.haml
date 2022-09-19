@@ -3,4 +3,8 @@
     .flex.w-full.justify-center.text-gray-500
       = text
     .w-full.bg-gray-200.rounded-full
-      .bg-fuchsia-600.text-xs.font-medium.text-center.h-4.leading-none.rounded-full{style: "width: #{guessed_percentage}%", class: class_names("animate-pulse": missing_guesses?)}
+      .bg-fuchsia-600.text-xs.font-medium.text-center.h-4.leading-none.rounded-full{
+        style: "width: #{guessed_percentage}%",
+        class: css_classes,
+        "data-test": "progress-bar"
+      }

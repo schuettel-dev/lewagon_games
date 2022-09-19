@@ -18,6 +18,10 @@ class Games::Beatles::PlaylistGuessesProgressBarComponent < ApplicationComponent
     guesses.count
   end
 
+  def css_classes
+    class_names("animate-pulse": missing_guesses?)
+  end
+
   delegate :count, to: :guessed, prefix: true
 
   def guessed_percentage

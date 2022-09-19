@@ -11,3 +11,9 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ViewComponent::TestCase
+  def new_component(...)
+    self.class.to_s.sub(/Test$/, "").constantize.new(...)
+  end
+end

@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 require "test_helper"
 
-class Batchess::SearchUsersComponentTest < ViewComponent::TestCase
+class Batches::SearchUsersComponentTest < ViewComponent::TestCase
   def test_component_renders_something_useful
     # assert_equal(
     #   %(<span>Hello, components!</span>),
