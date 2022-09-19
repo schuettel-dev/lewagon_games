@@ -2,8 +2,7 @@ class SessionsController < ApplicationController
   prepend_before_action :redirect_to_root_if_signed_in
   skip_before_action :authenticate_user!
 
-  def new
-  end
+  def new; end
 
   private
 
